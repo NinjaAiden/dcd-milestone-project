@@ -1,13 +1,14 @@
-{% extends 'base.html' %}
-
-{% block content %}
-<div class="row">
-    <h1>{{recipe.recipe_title.capitalize()}}</h1>
-    <p>Cooking time: {{recipe.cook_time}}</p>
-    <p>Recipe by: {{recipe.author_name}}</p>
-    <p>Cuisine: {{recipe.cuisine_type.capitalize()}}</p>
-
-    <div>
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+    <div class="row">
+        <h1 class='m-3'>{{recipe.recipe_title.capitalize()}}</h1>
+    </div>
+    <div class="row">
+        <p class='mr-3'>Cooking time: {{recipe.cook_time}}</p>
+        <p class='mr-3'>Recipe by: {{recipe.author_name}}</p>
+        <p>Cuisine: {{recipe.cuisine_type.capitalize()}}</p>
+    </div>
+    <div class="row">
         <ul>
             {% for ingredient in recipe.ingredients_list %}
             <li>{{ingredient.capitalize()}}</li>
@@ -18,9 +19,9 @@
         <ol>
             {% for method in recipe.method_list %}
             <li>{{method}}</li>
-            <br> 
-            {% endfor %}
+            <br> {% endfor %}
         </ol>
     </div>
+</div>
 </div>
 {% endblock %}
