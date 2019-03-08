@@ -8,14 +8,17 @@
         <p class='mr-3'>Recipe by: {{recipe.author_name}}</p>
         <p>Cuisine: {{recipe.cuisine_type.capitalize()}}</p>
     </div>
+    <h2>Ingredients</h2>
     <div class="row">
+        
         <ul>
             {% for ingredient in recipe.ingredients_list %}
             <li>{{ingredient.capitalize()}}</li>
             {% endfor %}
         </ul>
     </div>
-    <div>
+    <div class="row">
+        <h2>Method</h2>
         <ol>
             {% for method in recipe.method_list %}
             <li>{{method}}</li>
