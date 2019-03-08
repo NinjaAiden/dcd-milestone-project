@@ -1,11 +1,14 @@
-{% for recipe in recipes %}
+{% extends 'base.html'%} {% block content %} {% for recipe in recipes %}
+<div class="container border">
+    <div class="row mt-3 ml-3">
+        <h2>
+            <a href="{{url_for('view_recipe', recipe_id=recipe._id)}}">{{recipe.recipe_title.capitalize()}}</a>
+        </h2>
+    </div>
+    <div class="row ml-3">
+        <p class='mr-3'>Cooking time: {{recipe.cook_time}}</p>
+        <p>Cuisine: {{recipe.cuisine_type.capitalize()}}</p>
+    </div>
+</div>
 
-<div class="row">
-    <h2>
-        <a href="{{url_for('view_recipe', recipe_id=recipe._id)}}">{{recipe.recipe_title.capitalize()}}</a>
-    </h2>
-    <p>Cooking time: {{recipe.cook_time}}</p>
-    <p>Recipe by: {{recipe.author_name}}</p>
-    <p>Cuisine: {{recipe.cuisine_type.capitalize()}}</p>
-
-    {% endfor %}
+{% endfor %} {% endblock %}
