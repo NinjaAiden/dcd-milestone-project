@@ -1,25 +1,11 @@
 {% for recipe in recipes %}
 
 <div class="row">
-    <h1>{{recipe.recipe_title.capitalize()}}</h1>
+    <h2>
+        <a href="{{url_for('view_recipe', recipe_id=recipe._id)}}">{{recipe.recipe_title.capitalize()}}</a>
+    </h2>
     <p>Cooking time: {{recipe.cook_time}}</p>
-    <p>Recipe from: {{recipe.author_name}}</p>
+    <p>Recipe by: {{recipe.author_name}}</p>
     <p>Cuisine: {{recipe.cuisine_type.capitalize()}}</p>
 
-    <div>
-        <ol>
-            {% for ingredient in recipe.ingredients_list %} 
-                <li>{{ingredient.capitalize()}}</li>
-            {% endfor %}
-        </ol>
-    </div>
-    <div>
-        <ol>
-            {% for method in recipe.method_list %}
-                <li>{{method}}</li><br>
-            {% endfor %}
-        </ol>
-    </div>
-</div>
-
-{% endfor %}
+    {% endfor %}
