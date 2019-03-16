@@ -38,6 +38,28 @@ def login():
     
     return render_template('login.html')
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    
+    # check if user is logged in
+    if 'username' in session:
+        return redirect('/')
+
+    if request.method == 'POST':
+        
+        # Check if username exists in database                                                                
+        users = mongo.db.users
+        existing_user = users.find_one({'username': request.form['username']})
+        
+        if existing_user is None:
+            users.insert_one({'username': request.form['username'], 'password': request.form['password']})
+            session['username'] = request.form['username']
+            return redirect('/')
+        else:
+            flash("Username already exists. Please choose a different name")
+        
+    return render_template('register.html')
+
 # route for logging out
 @app.route('/logout')
 def logout():
