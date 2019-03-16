@@ -1,0 +1,26 @@
+{% extends 'base.html'%} {% block content %} {% if session['logged_in'] %}
+
+<h2>You're logged in already!</h2>
+
+{% else %}
+<div class="container login">
+    <h4 class="text-center my-3">Please login to continue</h4>
+    <div class="mx-auto" style="width: 200px;">
+        <form action="/login" method="POST">
+            <input class="my-1" type="username" name="username" placeholder="Username">
+            <input class="my-1" type="password" name="password" placeholder="Password">
+            <input class="my-1 text-center" type="submit" value="Log in">
+        </form>
+    </div>
+    <p class="my-1">Not a member yet? Register <a href=#>here</a></p>
+
+    {% with messages = get_flashed_messages() %} {% if messages %}
+    <ul class=flashes>
+        {% for message in messages %}
+        <p class="bg-warning">{{ message }}</p>
+        {% endfor %}
+    </ul>
+    {% endif %} {% endwith %}
+    
+</div>
+{% endif %} {% endblock %}

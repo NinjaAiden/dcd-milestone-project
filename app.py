@@ -1,11 +1,12 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for, session
+from flask import Flask, render_template, redirect, request, url_for, session, flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'dcd-cookbook'
 app.config["MONGO_URI"] = 'mongodb://admin:Xb0x3869@ds357955.mlab.com:57955/dcd-cookbook'
+app.config["SECRET_KEY"] = 'SECRET_KEY'
 
 mongo = PyMongo(app)
 
@@ -15,6 +16,33 @@ mongo = PyMongo(app)
 def get_recipes():
     return render_template('recipes.html',
         recipes=mongo.db.recipes.find())
+
+# login page
+@app.route('/login', methods=['GET','POST'])
+def login():
+    
+    # check if user is logged in
+    if 'username' in session:
+        return redirect('/')
+    
+    # check login details
+    if request.method == "POST":
+        users = mongo.db.users
+        login_user = users.find_one({'username': request.form['username']})
+        if login_user and login_user['password'] == request.form['password']:
+            session['username'] = request.form['username']
+            return redirect('/')
+        else:
+            # show message if password incorrect
+            flash("Invalid username/password combination, please try again", category='error')
+    
+    return render_template('login.html')
+
+# route for logging out
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    return redirect('/')
 
 # page to view recipe in full
 @app.route('/view_recipe/<recipe_id>')
@@ -40,7 +68,10 @@ def insert_recipe():
     ingredient = request.form.getlist('ingredient')
     
     for i in ingredient:
-        ingredients.append(i)
+        if i == "":
+            pass
+        else:
+            ingredients.append(i)
     
     # form method into a dictionary
     method_list = []
@@ -48,7 +79,10 @@ def insert_recipe():
     method = request.form.getlist('method')
     
     for m in method:
-        method_list.append(m)
+        if m == "":
+            pass
+        else:
+            method_list.append(m)
     
     # Reorganise all data into one dictionary before inserting into database
     data = {
