@@ -27,8 +27,36 @@ def add_recipe():
 
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
+    # get database collection
     recipes=mongo.db.recipes
-    recipes.insert_one(request.form.to_dict())
+    
+    # form ingredients into a dictionary
+    ingredients = []
+    
+    ingredient = request.form.getlist('ingredient')
+    
+    for i in ingredient:
+        ingredients.append(i)
+    
+    # form method into a dictionary
+    method_list = []
+   
+    method = request.form.getlist('method')
+    
+    for m in method:
+        method_list.append(m)
+    
+    # Reorganise all data into one dictionary before inserting into database
+    data = {
+        "recipe_title": request.form['recipe_title'].lower(),
+        "cuisine_type": request.form['cuisine_type'],
+        "cook_time": request.form['cook_time'],
+        "ingredients_list": ingredients, # dictionary for ingredients
+        "method_list": method_list # dictionary for method
+    }
+
+    recipes.insert_one(data)
+    
     return redirect(url_for('get_recipes'))
 
 if __name__ == '__main__':

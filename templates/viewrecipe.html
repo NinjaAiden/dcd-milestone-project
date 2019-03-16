@@ -10,15 +10,15 @@
     </div>
     <h2>Ingredients</h2>
     <div class="row">
-        
+
         <ul>
             {% for ingredient in recipe.ingredients_list %}
             <li>{{ingredient.capitalize()}}</li>
             {% endfor %}
         </ul>
     </div>
+    <h2>Method</h2>
     <div class="row">
-        <h2>Method</h2>
         <ol>
             {% for method in recipe.method_list %}
             <li>{{method}}</li>
