@@ -111,10 +111,19 @@ def insert_recipe():
             method_list.append(m)
     
     # Reorganise all data into one dictionary before inserting into database
+    
+    author = ''
+    
+    if 'username' in session:
+        author = session['username']
+    else:
+        author = 'guest'
+    
     data = {
         "recipe_title": request.form['recipe_title'].lower(),
         "cuisine_type": request.form['cuisine_type'],
         "cook_time": request.form['cook_time'],
+        "author_name": author,
         "ingredients_list": ingredients, # dictionary for ingredients
         "method_list": method_list # dictionary for method
     }
