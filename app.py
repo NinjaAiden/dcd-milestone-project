@@ -134,11 +134,12 @@ def insert_recipe():
 
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
-    the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    return render_template('editrecipe.html', recipe=the_recipe)
+    the_recipe =  mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    all_cuisine=mongo.db.cuisine.find()
+    return render_template('editrecipe.html', recipe=the_recipe, cuisine=all_cuisine)
 
-@app.route('/update_recipe')
-def update_recipe():
+@app.route('/update_recipe/<recipe_id>', methods=['POST'])
+def update_recipe(recipe_id):
     
     # form ingredients into a dictionary
     ingredients = []
@@ -163,13 +164,24 @@ def update_recipe():
             method_list.append(m)
     
     # Reorganise all data into one dictionary before inserting into database
-    data = {
+    
+    author = ''
+    
+    if 'username' in session:
+        author = session['username']
+    else:
+        author = 'guest'
+    
+    recipes=mongo.db.recipes
+    recipes.update( {'_id': ObjectId(recipe_id)},
+    {
         "recipe_title": request.form['recipe_title'].lower(),
         "cuisine_type": request.form['cuisine_type'],
         "cook_time": request.form['cook_time'],
+        "author_name": author,
         "ingredients_list": ingredients, # dictionary for ingredients
         "method_list": method_list # dictionary for method
-    }
+    })
     
     return redirect(url_for('get_recipes'))
 

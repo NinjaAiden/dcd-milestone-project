@@ -27,7 +27,7 @@
     </div>
     {% if session['username'] == recipe.author_name %}
     <div class="row">
-        <a href="#">Edit Recipe</a>
+        <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">Edit Recipe</a>
     </div>
     {% endif %}
 </div>
