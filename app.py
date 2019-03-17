@@ -47,10 +47,14 @@ def register():
 
     if request.method == 'POST':
         
+        if request.form['guest']:
+            flash('This is a reserved name, please choose a different name')
+        
         # Check if username exists in database                                                                
         users = mongo.db.users
         existing_user = users.find_one({'username': request.form['username']})
         
+        # if user name does not exist, add to database
         if existing_user is None:
             users.insert_one({'username': request.form['username'], 'password': request.form['password']})
             session['username'] = request.form['username']
