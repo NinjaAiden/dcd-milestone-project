@@ -47,8 +47,9 @@ def register():
 
     if request.method == 'POST':
         
-        if request.form['guest']:
+        if request.form['username'] == 'guest':
             flash('This is a reserved name, please choose a different name')
+            return render_template('register.html')
         
         # Check if username exists in database                                                                
         users = mongo.db.users
