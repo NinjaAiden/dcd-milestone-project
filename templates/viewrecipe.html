@@ -25,6 +25,10 @@
             <br> {% endfor %}
         </ol>
     </div>
-</div>
+    {% if session['username'] == recipe.author_name %}
+    <div class="row">
+        <a href="#">Edit Recipe</a>
+    </div>
+    {% endif %}
 </div>
 {% endblock %}

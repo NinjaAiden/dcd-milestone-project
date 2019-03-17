@@ -123,6 +123,47 @@ def insert_recipe():
     
     return redirect(url_for('get_recipes'))
 
+@app.route('/edit_recipe/<recipe_id>')
+def edit_recipe(recipe_id):
+    the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    return render_template('editrecipe.html', recipe=the_recipe)
+
+@app.route('/update_recipe')
+def update_recipe():
+    
+    # form ingredients into a dictionary
+    ingredients = []
+    
+    ingredient = request.form.getlist('ingredient')
+    
+    for i in ingredient:
+        if i == "":
+            pass
+        else:
+            ingredients.append(i)
+    
+    # form method into a dictionary
+    method_list = []
+   
+    method = request.form.getlist('method')
+    
+    for m in method:
+        if m == "":
+            pass
+        else:
+            method_list.append(m)
+    
+    # Reorganise all data into one dictionary before inserting into database
+    data = {
+        "recipe_title": request.form['recipe_title'].lower(),
+        "cuisine_type": request.form['cuisine_type'],
+        "cook_time": request.form['cook_time'],
+        "ingredients_list": ingredients, # dictionary for ingredients
+        "method_list": method_list # dictionary for method
+    }
+    
+    return redirect(url_for('get_recipes'))
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
         port=int(os.environ.get('PORT')),
