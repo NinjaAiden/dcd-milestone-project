@@ -38,6 +38,7 @@ def login():
     
     return render_template('login.html')
 
+# registration page
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     

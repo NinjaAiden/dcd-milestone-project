@@ -7,7 +7,13 @@
     </div>
     <div class="row ml-3">
         <p class='mr-3'>Cooking time: {{recipe.cook_time}}</p>
-        <p>Cuisine: {{recipe.cuisine_type.capitalize()}}</p>
+        <p class="mr-3">Cuisine: {{recipe.cuisine_type.capitalize()}}</p>
+        {% if recipe.is_vegetarian == 'on' %}
+        <p class='mr-3 text-success'>Vegetarian</p>
+        {% endif %}
+        {% if recipe.is_vegan == 'on' %}
+        <p class='mr-3 text-danger'>Vegan</p>
+        {% endif %}
     </div>
 </div>
 
