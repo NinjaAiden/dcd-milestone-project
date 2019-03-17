@@ -116,6 +116,19 @@ def insert_recipe():
     
     author = ''
     
+    vegetarian = ''
+    vegan = request.form['is_vegan']
+    
+    if request.form.get('is_vegetarian', False):
+        vegetarian = 'on'
+    else:
+        vegetarian = 'off'
+    
+    if request.form.get('is_vegan', False):
+        vegan = 'on'
+    else:
+        vegan = 'off'
+    
     if 'username' in session:
         author = session['username']
     else:
@@ -127,7 +140,9 @@ def insert_recipe():
         "cook_time": request.form['cook_time'],
         "author_name": author,
         "ingredients_list": ingredients, # dictionary for ingredients
-        "method_list": method_list # dictionary for method
+        "method_list": method_list, # dictionary for method
+        "is_vegetarian": vegetarian,
+        "is_vegan": vegan
     }
 
     recipes.insert_one(data)
@@ -169,6 +184,19 @@ def update_recipe(recipe_id):
     
     author = ''
     
+    vegetarian = ''
+    vegan = ''
+    
+    if request.form.get('is_vegetarian', False):
+        vegetarian = 'on'
+    else:
+        vegetarian = 'off'
+    
+    if request.form.get('is_vegan', False):
+        vegan = 'on'
+    else:
+        vegan = 'off'
+    
     if 'username' in session:
         author = session['username']
     else:
@@ -182,7 +210,9 @@ def update_recipe(recipe_id):
         "cook_time": request.form['cook_time'],
         "author_name": author,
         "ingredients_list": ingredients, # dictionary for ingredients
-        "method_list": method_list # dictionary for method
+        "method_list": method_list, # dictionary for method
+        "is_vegetarian": vegetarian,
+        "is_vegan": vegan
     })
     
     return redirect(url_for('get_recipes'))
