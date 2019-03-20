@@ -112,12 +112,10 @@ def insert_recipe():
         else:
             method_list.append(m)
     
-    # Reorganise all data into one dictionary before inserting into database
-    
-    author = ''
+    # check if checkboxes are checked
     
     vegetarian = ''
-    vegan = request.form['is_vegan']
+    vegan = request.form.get('is_vegetarian')
     
     if request.form.get('is_vegetarian', False):
         vegetarian = 'on'
@@ -129,10 +127,19 @@ def insert_recipe():
     else:
         vegan = 'off'
     
+    # check if user is signed in
+    
+    author = ''
+    
     if 'username' in session:
         author = session['username']
     else:
         author = 'guest'
+    
+    if request.form.get('cuisine_type') == None:
+        flash('PLease select a valid option')
+    
+    # Reorganise all data into one dictionary before inserting into database
     
     data = {
         "recipe_title": request.form['recipe_title'].lower(),
