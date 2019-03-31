@@ -8,11 +8,12 @@
             <!-- row for title and cuisine type -->
             <div class="row border p-2 mb-2">
                 <div class="col-8">
-                    <input class="col-9" id="recipe_title" name="recipe_title" type="text" value="{{recipe.recipe_title}}">
+                    <input class="col-9" id="recipe_title" name="recipe_title" type="text" 
+                        value="{{recipe.recipe_title}}" required>
                     <label for="icon_prefix">Recipe Name</label>
                 </div>
                 <div class="col-4">
-                    <select id="cuisine" name="cuisine_type">
+                    <select id="cuisine" name="cuisine_type" required>
                         {% if recipe.cuisine_type %}
                         <option value="{{recipe.cuisine_type}}" selected>{{recipe.cuisine_type.capitalize()}}</option>
                         {% else %}
@@ -25,7 +26,8 @@
                     <label>Cuisine Origin</label>
                 </div>
                 <div class="col-8">
-                    <input class="col-6" id="cook_time" name="cook_time" type="text" value="{{recipe.cook_time}}">
+                    <input class="col-6" id="cook_time" name="cook_time" type="text" 
+                        value="{{recipe.cook_time}}" required>
                     <label for="icon_prefix">Cooking Time</label>
                 </div>
             </div>
