@@ -85,7 +85,7 @@ def add_recipe():
         cuisine=mongo.db.cuisine.find())
 
 # page to collate data to database
-@app.route('/insert_recipe', methods=['POST'])
+@app.route('/insert_recipe', methods=['GET','POST'])
 def insert_recipe():
     # get database collection
     recipes=mongo.db.recipes
@@ -96,10 +96,7 @@ def insert_recipe():
     ingredient = request.form.getlist('ingredient')
     
     for i in ingredient:
-        if i == "":
-            pass
-        else:
-            ingredients.append(i)
+        ingredients.append(i)
     
     # form method into a dictionary
     method_list = []
@@ -107,10 +104,7 @@ def insert_recipe():
     method = request.form.getlist('method')
     
     for m in method:
-        if m == "":
-            pass
-        else:
-            method_list.append(m)
+        method_list.append(m)
     
     # check if checkboxes are checked
     

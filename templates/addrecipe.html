@@ -31,15 +31,16 @@
                 <div class="col-12" id="ingredient_outer">
                     <label class="mt-3">Ingredients</label>
                     <div class="input-field">
-                        <input class="col-11 mb-1" id="ingredient_field" name="ingredient" type="text">
-                        <button onclick="createIngredient()">Add Ingredient</button>
+                        <input class="col-11 mb-1" id="ingredient_field" name="ingredient_field" type="text">
+                        <button onclick="createIngredient(); return false;">Add Ingredient</button>
                     </div>
                 </div>
                 <!-- method list -->
                 <div class="col-12" id="method_outer">
                     <label class="mt-3">Method</label>
                     <div class="input-field">
-                        <textarea class="col-11" id="method_field" name="method" rows="3" cols="100%"></textarea>
+                        <textarea class="col-11" id="method_field" name="method_field" rows="3" cols="100%"></textarea>
+                        <button onclick="createMethod(); return false;">Add Method</button>
                     </div>
                 </div>
             </div>
@@ -61,8 +62,8 @@
                 </div>
             </div>
             <div class="row">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Add Recipe
-             </button>
+                <button type="submit" id="submitButton">Add Recipe</button>
+                </button>
             </div>
         </form>
     </div>
@@ -71,20 +72,26 @@
 <script>
     function createIngredient() {
         var ingredientInput = document.getElementById('ingredient_field').value;
-        var para = document.createElement("p");
+        var para = document.createElement("input");
         para.setAttribute('name', 'ingredient');
-        para.innerHTML = ingredientInput;
+        para.setAttribute('type', 'text');
+        para.setAttribute('value', ingredientInput);
+        var newLine = document.createElement("br");
         var element = document.getElementById("ingredient_outer");
         element.appendChild(para);
+        element.appendChild(newLine);
     }
-    
+
     function createMethod() {
-        var ingredientInput = document.getElementById('method_field').value;
-        var para = document.createElement("p");
+        var methodInput = document.getElementById('method_field').value;
+        var para = document.createElement("input");
         para.setAttribute('name', 'method');
-        para.innerHTML = ingredientInput;
+        para.setAttribute('type', 'text');
+        para.setAttribute('value', methodInput);
+        var newLine = document.createElement("br");
         var element = document.getElementById("method_outer");
         element.appendChild(para);
+        element.appendChild(newLine);
     }
 </script>
 {% endblock %}
