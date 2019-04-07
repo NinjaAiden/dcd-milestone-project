@@ -2,8 +2,18 @@ html, body{
     height: 100%;
 }
 
-.login{
+.center-elements{
     height: 100%;
     text-align: center;
     transform: translateY(20%);
+}
+
+.outer{
+    height: 100%;
+    width: 100%;
+    background-color: #f0f8ff;
+}
+
+.border{
+    width: 90%;
 }
