@@ -26,7 +26,7 @@ number of criteria.
     creates a new editable field to allow for editing before submission.
 - Buttons in the 'View recipe' pages are colour coded to avoid accidental deletion.
 - The recipe overview displays whether a recipe is vegetarian or vegan, colour 
-    coded to differentiate them
+    coded to differentiate them.
 
 ## Technologies
 
@@ -34,14 +34,11 @@ This data driven web application uses the following technologies:
 
 - MongoDB / NoSQL for the database
 - PyMongo was used to facilitate communication between MongoDB and the application
-- Python was used for the majority of this application, using the flask framework
-    for the backend code
-- Bootstrap 4.0 was used for CSS styling, with a custom CSS overlay, which can 
-    be found under the static directory
-- Some HTML was used for visual purposes and creating forms to feed information 
-    into the back end
+- Python was used for the majority of this application, using the flask framework for the backend code
+- Bootstrap 4.0 was used for CSS styling, with a custom CSS overlay, which can be found under the static directory
+- HTML was used for visual purposes and creating forms to feed information into the back end
+- Javascript was used in some places to add or update elements of the user interface
 
 ## Deployment
 
-This application was deployed on heroku and linked to the master branch of the Github
-repository for automatic synchronisation of commits
+This application was deployed on heroku and linked to the master branch of the Github repository for automatic synchronisation of commits
