@@ -8,8 +8,7 @@
             <!-- row for title and cuisine type -->
             <div class="row border p-2 mb-2">
                 <div class="col-8">
-                    <input class="col-9" id="recipe_title" name="recipe_title" type="text" 
-                        value="{{recipe.recipe_title}}" required>
+                    <input class="col-9" id="recipe_title" name="recipe_title" type="text" value="{{recipe.recipe_title}}" required>
                     <label for="icon_prefix">Recipe Name</label>
                 </div>
                 <div class="col-4">
@@ -26,8 +25,7 @@
                     <label>Cuisine Origin</label>
                 </div>
                 <div class="col-8">
-                    <input class="col-6" id="cook_time" name="cook_time" type="text" 
-                        value="{{recipe.cook_time}}" required>
+                    <input class="col-6" id="cook_time" name="cook_time" type="text" value="{{recipe.cook_time}}" required>
                     <label for="icon_prefix">Cooking Time</label>
                 </div>
             </div>
@@ -51,7 +49,7 @@
                 </div>
                 <!-- vegan / vegetarian switches -->
                 <div class="row">
-                    <div class="switch mr-3">
+                    <div class="switch mr-3 ml-3">
                         <label>
                         <input id="is_vegetarian" name="is_vegetarian" type="checkbox">
                         <span class="lever"></span>
@@ -66,10 +64,10 @@
                     </label>
                     </div>
                 </div>
-                <div class="row">
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Submit changes
-                    </button>
-                </div>
+            </div>
+            <div class="row">
+                <button type="submit" id="submitButton">Update Recipe</button>
+                </button>
             </div>
         </form>
     </div>
