@@ -20,6 +20,14 @@ number of criteria.
 - Users who are not logged in, will have their recipes signed as 'guest'
 - Guests are unable to modify or delete recipes, only add or view them
 
+## UX
+
+- In the 'Add a recipe' page, pushing the 'Add ingredient' or 'Add method' button,
+    creates a new editable field to allow for editing before submission.
+- Buttons in the 'View recipe' pages are colour coded to avoid accidental deletion.
+- The recipe overview displays whether a recipe is vegetarian or vegan, colour 
+    coded to differentiate them
+
 ## Technologies
 
 This data driven web application uses the following technologies:
