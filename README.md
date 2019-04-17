@@ -18,7 +18,9 @@ number of criteria.
 - To add a recipe, follow the 'Add a recipe' link at the top of the page
 - If the user is logged in, the recipe will be signed as created by that user
 - Users who are not logged in, will have their recipes signed as 'guest'
-- Guests are unable to modify or delete recipes, only add or view them
+- Clicking on the up arrow at the side of the main view will allow an upvote of the recipe
+- Users cannot upvote their own recipes
+- Guests are unable to modify, upvote or delete recipes, only add or view them
 
 ## UX
 
@@ -27,6 +29,7 @@ number of criteria.
 - Buttons in the 'View recipe' pages are colour coded to avoid accidental deletion.
 - The recipe overview displays whether a recipe is vegetarian or vegan, colour 
     coded to differentiate them.
+- A confirmation is required to delete recipes to avoid accidental deletions
 
 ## Technologies
 
