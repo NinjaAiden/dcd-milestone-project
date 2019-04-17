@@ -27,8 +27,9 @@
     </div>
     {% if session['username'] == recipe.author_name %}
     <div class="row">
-        <a  class="btn btn-outline-primary mx-3" href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">Edit Recipe</a>
-        <button class="btn btn-outline-danger mx-3" href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}">Delete Recipe</button>
+        <a class="btn btn-outline-primary mx-3" href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">Edit Recipe</a>
+        <button class="btn btn-outline-danger mx-3" onclick="confirmDelete()">Delete Recipe</button>
+        <a class="btn btn-outline-danger mx-3" id="confirmDeleteBtn" href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" style="display:none;">Confirm Delete</a>
     </div>
     {% endif %}
 </div>

@@ -23,3 +23,13 @@ function createMethod() {
     element.appendChild(met);
     element.appendChild(newLine);
 }
+
+function confirmDelete() {
+    var confirmBtn = document.getElementById("confirmDeleteBtn");
+    if (confirmBtn.style.display === "none") {
+        confirmBtn.style.display = "block";
+    }
+    else {
+        confirmBtn.style.display = "none";
+    }
+}
