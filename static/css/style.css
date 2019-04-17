@@ -1,19 +1,29 @@
-html, body{
+html,
+body {
     height: 100%;
 }
 
-.center-elements{
+.center-elements {
     height: 100%;
     text-align: center;
     transform: translateY(20%);
 }
 
-.main-container{
+.main-container {
     height: 100%;
     width: 100%;
     background-color: #f0f8ff;
 }
 
-.border{
+.border {
     width: 90%;
+}
+
+.upvote-btn {
+    font-size: 50px;
+    color: #0600f6;
+}
+
+.view-bind{
+    margin-right: 0;
 }
