@@ -7,11 +7,11 @@
             </h2>
         </div>
         <!-- if logged in, show upvote button for recipes created by other users -->
-        {% if session['username'] and session['username'] != recipe.author_name %}
         <div class="row col-2 mt-3 view-bind">
-            <a href="#"><i class="fas fa-arrow-circle-up upvote-btn"></i></a>
+            {% if session['username'] and session['username'] != recipe.author_name %}
+            <a href="#"><i class="fas fa-arrow-circle-up upvote-btn"></i></a> 
+            {% endif %}
         </div>
-        {% endif %}
         <div class="row ml-3 col-10">
             <p class='mr-3'>Cooking time: {{recipe.cook_time}}</p>
             <p class="mr-3">Cuisine: {{recipe.cuisine_type.capitalize()}}</p>
@@ -22,6 +22,7 @@
             <p class='mr-3 text-danger'>Vegan</p>
             {% endif %}
         </div>
+        <p>Upvotes: {{recipe.upvotes}}</p>
     </div>
 </div>
 

@@ -143,7 +143,9 @@ def insert_recipe():
         "ingredients_list": ingredients, # dictionary for ingredients
         "method_list": method_list, # dictionary for method
         "is_vegetarian": vegetarian,
-        "is_vegan": vegan
+        "is_vegan": vegan,
+        "upvotes": "0",
+        "upvoted_by": []
     }
 
     recipes.insert_one(data)
