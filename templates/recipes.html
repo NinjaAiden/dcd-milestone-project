@@ -6,6 +6,7 @@
                 <a href="{{url_for('view_recipe', recipe_id=recipe._id)}}">{{recipe.recipe_title.capitalize()}}</a>
             </h2>
         </div>
+        <!-- if logged in, show upvote button for recipes created by other users -->
         {% if session['username'] and session['username'] != recipe.author_name %}
         <div class="row col-2 mt-3 view-bind">
             <a href="#"><i class="fas fa-arrow-circle-up upvote-btn"></i></a>
@@ -14,6 +15,7 @@
         <div class="row ml-3 col-10">
             <p class='mr-3'>Cooking time: {{recipe.cook_time}}</p>
             <p class="mr-3">Cuisine: {{recipe.cuisine_type.capitalize()}}</p>
+            <!-- check if recipe is vegetarian / vegan and color code accordingly -->
             {% if recipe.is_vegetarian == 'on' %}
             <p class='mr-3 text-success'>Vegetarian</p>
             {% endif %} {% if recipe.is_vegan == 'on' %}

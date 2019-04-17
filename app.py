@@ -211,7 +211,7 @@ def update_recipe(recipe_id):
         "cook_time": request.form['cook_time'],
         "author_name": author,
         "ingredients_list": ingredients, # dictionary for ingredients
-        "method_list": method_list, # dictionary for method
+        "method_list": method_list,      # dictionary for method
         "is_vegetarian": vegetarian,
         "is_vegan": vegan
     })
