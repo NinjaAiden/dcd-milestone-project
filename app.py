@@ -234,15 +234,18 @@ def upvote_recipe(recipe_id):
     # get list of upvoters
     upvoters = recipe['upvoted_by']
     
-    # append current user to list of upvoters
-    current_upvoter = session['username']
-    upvoters.append(current_upvoter)
-    
     # get number of upvotes and parse to integer
     upvote_int = int(recipe['upvotes'])
     
-    # update number of upvotes
-    upvote_int +=1
+    # append current user to list of upvoters
+    current_upvoter = session['username']
+    if current_upvoter not in upvoters:
+        upvoters.append(current_upvoter)
+        flash("Thank you for your vote")
+        # update number of upvotes
+        upvote_int +=1
+    else: 
+        flash("You have already voted for this recipe")
     
     # parse upvotes back to string
     upvote_string= str(upvote_int)
@@ -256,7 +259,7 @@ def upvote_recipe(recipe_id):
         }
     })
     
-    return redirect(url_for('get_recipes'))
+    return redirect(url_for('view_recipe', recipe_id=recipe['_id']))
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

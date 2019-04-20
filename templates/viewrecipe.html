@@ -10,6 +10,13 @@
             <i class="fas fa-arrow-circle-up upvote-btn"></i>
         </a> {% endif %}
     </div>
+    {% with messages = get_flashed_messages() %} {% if messages %}
+    <ul class=flashes>
+        {% for message in messages %}
+        <p class="bg-success">{{ message }}</p>
+        {% endfor %}
+    </ul>
+    {% endif %} {% endwith %}
     <div class="row">
         <p class='mr-3'>Cooking time: {{recipe.cook_time}}</p>
         <p class='mr-3'>Recipe by: {{recipe.author_name}}</p>
