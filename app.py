@@ -208,8 +208,10 @@ def update_recipe(recipe_id):
         author = 'guest'
     
     recipes=mongo.db.recipes
-    recipes.update( {'_id': ObjectId(recipe_id)},
+    recipes.update_one( {'_id': ObjectId(recipe_id)},
     {
+        '$set': 
+        {
         "recipe_title": request.form['recipe_title'].lower(),
         "cuisine_type": request.form['cuisine_type'],
         "cook_time": request.form['cook_time'],
@@ -218,6 +220,7 @@ def update_recipe(recipe_id):
         "method_list": method_list,      # dictionary for method
         "is_vegetarian": vegetarian,
         "is_vegan": vegan
+        }
     })
     
     return redirect(url_for('get_recipes'))
