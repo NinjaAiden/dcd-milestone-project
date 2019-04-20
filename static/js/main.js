@@ -3,7 +3,7 @@ function createIngredient() {
     var ing = document.createElement("input");
     ing.setAttribute('name', 'ingredient');
     ing.setAttribute('type', 'text');
-    ing.setAttribute('class', 'col-11 mb-1');
+    ing.setAttribute('class', 'col-11 my-1');
     ing.setAttribute('value', ingredientInput);
     var newLine = document.createElement("br");
     var element = document.getElementById("ingredient_outer");
@@ -16,7 +16,7 @@ function createMethod() {
     var met = document.createElement("input");
     met.setAttribute('name', 'method');
     met.setAttribute('type', 'text');
-    met.setAttribute('class', 'col-11 mb-1');
+    met.setAttribute('class', 'col-11 my-1');
     met.setAttribute('value', methodInput);
     var newLine = document.createElement("br");
     var element = document.getElementById("method_outer");

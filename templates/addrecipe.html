@@ -26,21 +26,23 @@
                 </div>
             </div>
             <!-- main container for ingredients and method lists -->
-            <div class="row border">
+            <p>Ingredients</p>
+            <div class="row border py-2">
                 <!-- ingredients list -->
                 <div class="col-12" id="ingredient_outer">
-                    <label class="mt-3">Ingredients</label>
-                    <div class="input-field">
+                    <div class="input-field mt-2">
                         <input class="col-11 mb-1" id="ingredient_field" name="ingredient_field" type="text">
-                        <button onclick="createIngredient(); return false;">Add Ingredient</button>
+                        <button class="mb-2" onclick="createIngredient(); return false;">Add Ingredient</button>
                     </div>
                 </div>
+            </div>
+            <p class="mt-2">Method</p>
+            <div class="row border py-2">
                 <!-- method list -->
                 <div class="col-12" id="method_outer">
-                    <label class="mt-3">Method</label>
                     <div class="input-field">
                         <textarea class="col-11" id="method_field" name="method_field" rows="3" cols="100%"></textarea>
-                        <button onclick="createMethod(); return false;">Add Method</button>
+                        <button class="mb-2" onclick="createMethod(); return false;">Add Method</button>
                     </div>
                 </div>
             </div>
@@ -99,7 +101,7 @@
                         Contains shellfish
                     </label>
                 </div>
-                 <div class="switch mx-3">
+                <div class="switch mx-3">
                     <label>
                         <input id="has_soy" name="has_soy" type="checkbox">
                         <span class="lever"></span>
