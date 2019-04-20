@@ -1,6 +1,6 @@
 {% extends 'base.html'%} {% block content %} {% for recipe in recipes %}
 <div class="container border mt-3">
-    <div class="row col-11 view-bind">
+    <div class="row col-11">
         <div class="row mt-3 ml-3 col-10">
             <h2>
                 <a href="{{url_for('view_recipe', recipe_id=recipe._id)}}">{{recipe['recipe_title'].capitalize()}}</a>
@@ -9,14 +9,17 @@
         <div class="row ml-3 col-10">
             <p class='mr-3'>Cooking time: {{recipe.cook_time}}</p>
             <p class="mr-3">Cuisine: {{recipe.cuisine_type.capitalize()}}</p>
-            <!-- check if recipe is vegetarian / vegan and color code accordingly -->
-            {% if recipe.is_vegetarian == 'on' %}
-            <p class='mr-3 text-success'>Vegetarian</p>
-            {% endif %} {% if recipe.is_vegan == 'on' %}
-            <p class='mr-3 text-danger'>Vegan</p>
-            {% endif %}
+            <p>Created on: {{recipe['created'].strftime('%d-%m-%Y')}}</p>
         </div>
         <p>Upvotes: {{recipe.upvotes}}</p>
+    </div>
+    <div class="row ml-3 col-11">
+        <!-- check if recipe is vegetarian / vegan and color code accordingly -->
+        {% if recipe.is_vegetarian == 'on' %}
+        <p class='mr-3 text-success'>Vegetarian</p>
+        {% endif %} {% if recipe.is_vegan == 'on' %}
+        <p class='mr-3 text-danger'>Vegan</p>
+        {% endif %}
     </div>
 </div>
 

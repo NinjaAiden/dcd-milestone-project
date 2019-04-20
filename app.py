@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template, redirect, request, url_for, session, flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from datetime import datetime
 
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'dcd-cookbook'
@@ -145,7 +146,8 @@ def insert_recipe():
         "is_vegetarian": vegetarian,
         "is_vegan": vegan,
         "upvotes": "0",
-        "upvoted_by": []
+        "upvoted_by": [],
+        "created": datetime.now()
     }
 
     recipes.insert_one(data)
