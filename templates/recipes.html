@@ -3,14 +3,8 @@
     <div class="row col-11 view-bind">
         <div class="row mt-3 ml-3 col-10">
             <h2>
-                <a href="{{url_for('view_recipe', recipe_id=recipe._id)}}">{{recipe.recipe_title.capitalize()}}</a>
+                <a href="{{url_for('view_recipe', recipe_id=recipe._id)}}">{{recipe['recipe_title'].capitalize()}}</a>
             </h2>
-        </div>
-        <!-- if logged in, show upvote button for recipes created by other users -->
-        <div class="row col-2 mt-3 view-bind">
-            {% if session['username'] and session['username'] != recipe.author_name %}
-            <a href="#"><i class="fas fa-arrow-circle-up upvote-btn"></i></a> 
-            {% endif %}
         </div>
         <div class="row ml-3 col-10">
             <p class='mr-3'>Cooking time: {{recipe.cook_time}}</p>

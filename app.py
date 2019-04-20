@@ -225,6 +225,39 @@ def delete_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
     return redirect(url_for('get_recipes'))
 
+@app.route('/upvote_recipe/<recipe_id>', methods=['GET', 'POST'])
+def upvote_recipe(recipe_id):
+    
+    # get recipe information from database
+    recipe=mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    
+    # get list of upvoters
+    upvoters = recipe['upvoted_by']
+    
+    # append current user to list of upvoters
+    current_upvoter = session['username']
+    upvoters.append(current_upvoter)
+    
+    # get number of upvotes and parse to integer
+    upvote_int = int(recipe['upvotes'])
+    
+    # update number of upvotes
+    upvote_int +=1
+    
+    # parse upvotes back to string
+    upvote_string= str(upvote_int)
+    
+    # update database information
+    recipes = mongo.db.recipes
+    recipes.update_one( {'_id': ObjectId(recipe_id)},
+    { '$set': {
+        "upvoted_by": upvoters,
+        "upvotes": upvote_string
+        }
+    })
+    
+    return redirect(url_for('get_recipes'))
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
         port=int(os.environ.get('PORT')),
