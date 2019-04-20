@@ -4,19 +4,22 @@
         <h1 class='m-3'>{{recipe.recipe_title.capitalize()}}</h1>
     </div>
     <!-- if logged in, show upvote button -->
-    <div class="row col-2 mt-3 view-bind">
+    <div class="row col-11">
         {% if session['username'] and session['username'] != recipe.author_name %}
         <a href="{{url_for('upvote_recipe', recipe_id=recipe._id)}}">
             <i class="fas fa-arrow-circle-up upvote-btn"></i>
         </a> {% endif %}
+        <div class="row">
+            {% with messages = get_flashed_messages() %} {% if messages %}
+            <ul class=flashes>
+                {% for message in messages %}
+                <p class="bg-success">{{ message }}</p>
+                {% endfor %}
+            </ul>
+            {% endif %} {% endwith %}
+        </div>
     </div>
-    {% with messages = get_flashed_messages() %} {% if messages %}
-    <ul class=flashes>
-        {% for message in messages %}
-        <p class="bg-success">{{ message }}</p>
-        {% endfor %}
-    </ul>
-    {% endif %} {% endwith %}
+
     <div class="row">
         <p class='mr-3'>Cooking time: {{recipe.cook_time}}</p>
         <p class='mr-3'>Recipe by: {{recipe.author_name}}</p>
