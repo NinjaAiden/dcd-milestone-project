@@ -9,6 +9,7 @@
         <a href="{{url_for('upvote_recipe', recipe_id=recipe._id)}}">
             <i class="fas fa-arrow-circle-up upvote-btn"></i>
         </a> {% endif %}
+        <!-- flash messages display -->
         <div class="row">
             {% with messages = get_flashed_messages() %} {% if messages %}
             <ul class=flashes>

@@ -5,12 +5,13 @@
     </div>
     <div class="row">
         <form action="{{ url_for('insert_recipe') }}" method="POST" class="col-12">
-            <!-- row for title and cuisine type -->
             <div class="row border p-2 mb-2">
+                <!-- recipe title input -->
                 <div class="col-8">
                     <input class="col-9" id="recipe_title" name="recipe_title" type="text" required>
                     <label for="icon_prefix">Recipe Name</label>
                 </div>
+                <!-- cuisine selector -->
                 <div class="col-4">
                     <select id="cuisine" name="cuisine_type" required>
                         <option value="" disabled selected>Choose Cuisine</option>
@@ -20,15 +21,15 @@
                     </select>
                     <label>Cuisine Origin</label>
                 </div>
+                <!-- cook time input -->
                 <div class="col-8">
                     <input class="col-6" id="cook_time" name="cook_time" type="text" required>
                     <label for="icon_prefix">Cooking Time</label>
                 </div>
             </div>
-            <!-- main container for ingredients and method lists -->
+            <!-- ingredients list -->
             <p>Ingredients</p>
             <div class="row border py-2">
-                <!-- ingredients list -->
                 <div class="col-12" id="ingredient_outer">
                     <div class="input-field mt-2">
                         <input class="col-11 mb-1" id="ingredient_field" name="ingredient_field" type="text">
@@ -36,9 +37,9 @@
                     </div>
                 </div>
             </div>
+            <!-- method list -->
             <p class="mt-2">Method</p>
             <div class="row border py-2">
-                <!-- method list -->
                 <div class="col-12" id="method_outer">
                     <div class="input-field">
                         <textarea class="col-11" id="method_field" name="method_field" rows="3" cols="100%"></textarea>
@@ -46,8 +47,8 @@
                     </div>
                 </div>
             </div>
+            <!-- information checkboxes -->
             <p class="mt-3">Additional information</p>
-            <!-- vegan / vegetarian switches -->
             <div class="row border py-1">
                 <div class="switch mx-3">
                     <label>
@@ -71,6 +72,7 @@
                     </label>
                 </div>
             </div>
+            <!-- allergen checkboxes -->
             <p class='mt-3'>Allergen information</p>
             <div class="row border py-1">
                 <div class="switch mx-3">
@@ -116,7 +118,8 @@
                     </label>
                 </div>
             </div>
-            <div class="row">
+            <!-- submit button -->
+            <div class="row my-2">
                 <button type="submit" id="submitButton">Add Recipe</button>
                 </button>
             </div>
