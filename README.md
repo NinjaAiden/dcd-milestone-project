@@ -12,24 +12,24 @@ number of criteria.
 
 - The site will begin on a page with a list of recipes
 - Clicking on a recipe title loads a web page with the full details of that recipe
-- Useres who are signed in are able to modify or delete their own recipes, but not any others
+- Users who are signed in are able to modify or delete their own recipes, but not any others
 - login and registration links are at the top of the page, there is also a link to
     registration from the login page
 - To add a recipe, follow the 'Add a recipe' link at the top of the page
 - If the user is logged in, the recipe will be signed as created by that user
 - Users who are not logged in, will have their recipes signed as 'guest'
-- Clicking on the up arrow at the side of the main view will allow an upvote of the recipe
+- Clicking on the up arrow in the full recipe view will allow an upvote of the recipe
 - Users cannot upvote their own recipes
 - Guests are unable to modify, upvote or delete recipes, only add or view them
 
 ## UX
 
-- In the 'Add a recipe' page, pushing the 'Add ingredient' or 'Add method' button,
-    creates a new editable field to allow for editing before submission.
+- In the 'Add a recipe' page, pushing the 'Add ingredient' or 'Add method' button, creates a new editable field to allow for editing before submission.
 - Buttons in the 'View recipe' pages are colour coded to avoid accidental deletion.
 - The recipe overview displays whether a recipe is vegetarian or vegan, colour 
     coded to differentiate them.
 - A confirmation is required to delete recipes to avoid accidental deletions
+- A message is displayed after clicking on the upvote button to advise user of whether an upvote was successful
 
 ## Technologies
 
@@ -41,6 +41,7 @@ This data driven web application uses the following technologies:
 - Bootstrap 4.0 was used for CSS styling, with a custom CSS overlay, which can be found under the static directory
 - HTML was used for visual purposes and creating forms to feed information into the back end
 - Javascript was used in some places to add or update elements of the user interface
+- Font awesome links were used for button icons
 
 ## Deployment
 
