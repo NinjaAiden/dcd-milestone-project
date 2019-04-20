@@ -242,14 +242,14 @@ def upvote_recipe(recipe_id):
     # get number of upvotes and parse to integer
     upvote_int = int(recipe['upvotes'])
     
-    # append current user to list of upvoters
+    # if not voted for this recipe append current user to list of upvoters
     current_upvoter = session['username']
     if current_upvoter not in upvoters:
         upvoters.append(current_upvoter)
         flash("Thank you for your vote")
         # update number of upvotes
         upvote_int +=1
-    else: 
+    else:
         flash("You have already voted for this recipe")
     
     # parse upvotes back to string
