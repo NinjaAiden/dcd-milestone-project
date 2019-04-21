@@ -62,14 +62,22 @@
             <div class="row border py-1">
                 <div class="switch mx-3">
                     <label>
+                        {% if recipe.is_vegetarian == "on" %}
+                        <input id="is_vegetarian" name="is_vegetarian" type="checkbox" checked>
+                        {% else %}
                         <input id="is_vegetarian" name="is_vegetarian" type="checkbox">
+                        {% endif %}
                         <span class="lever"></span>
                         Vegetarian
                     </label>
                 </div>
                 <div class="switch">
                     <label>
+                        {% if recipe.is_vegan == "on" %}
+                        <input id="is_vegan" name="is_vegan" type="checkbox" checked>
+                        {% else %}
                         <input id="is_vegan" name="is_vegan" type="checkbox">
+                        {% endif %}
                         <span class="lever"></span>
                         Vegan
                     </label>
@@ -130,7 +138,7 @@
             </div>
             <!-- submit button -->
             <div class="row my-2">
-                <button type="submit" id="submitButton">Add Recipe</button>
+                <button type="submit" id="submitButton">Update Recipe</button>
                 </button>
             </div>
         </form>

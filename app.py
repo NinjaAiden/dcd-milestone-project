@@ -109,8 +109,7 @@ def insert_recipe():
     
     # check if checkboxes are checked
     
-    vegetarian = ''
-    vegan = request.form.get('is_vegetarian')
+    author = ''
     
     if request.form.get('is_vegetarian', False):
         vegetarian = 'on'
