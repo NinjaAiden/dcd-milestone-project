@@ -84,7 +84,11 @@
                 </div>
                 <div class="switch mx-3">
                     <label>
+                        {% if recipe.has_gluten == "on" %}
+                        <input id="has_gluten" name="has_gluten" type="checkbox" checked>
+                        {% else %}
                         <input id="has_gluten" name="has_gluten" type="checkbox">
+                        {% endif %}
                         <span class="lever"></span>
                         Contains gluten
                     </label>
@@ -95,42 +99,66 @@
             <div class="row border py-1">
                 <div class="switch mx-3">
                     <label>
+                        {% if recipe.has_fish == "on" %}
+                        <input id="has_fish" name="has_fish" type="checkbox" checked>
+                        {% else %}
                         <input id="has_fish" name="has_fish" type="checkbox">
+                        {% endif %}
                         <span class="lever"></span>
                         Contains fish
                     </label>
                 </div>
                 <div class="switch">
                     <label>
+                        {% if recipe.has_nuts == "on" %}
+                        <input id="has_nuts" name="has_nuts" type="checkbox" checked>
+                        {% else %}
                         <input id="has_nuts" name="has_nuts" type="checkbox">
+                        {% endif %}
                         <span class="lever"></span>
                         Contains nuts
                     </label>
                 </div>
                 <div class="switch mx-3">
                     <label>
+                        {% if recipe.has_milk == "on" %}
+                        <input id="has_milk" name="has_milk" type="checkbox" checked>
+                        {% else %}
                         <input id="has_milk" name="has_milk" type="checkbox">
+                        {% endif %}
                         <span class="lever"></span>
                         Contains milk
                     </label>
                 </div>
                 <div class="switch">
                     <label>
+                        {% if recipe.has_shellfish == "on" %}
+                        <input id="has_shellfish" name="has_shellfish" type="checkbox" checked>
+                        {% else %}
                         <input id="has_shellfish" name="has_shellfish" type="checkbox">
+                        {% endif %}
                         <span class="lever"></span>
                         Contains shellfish
                     </label>
                 </div>
                 <div class="switch mx-3">
                     <label>
+                        {% if recipe.has_soy == "on" %}
+                        <input id="has_soy" name="has_soy" type="checkbox" checked>
+                        {% else %}
                         <input id="has_soy" name="has_soy" type="checkbox">
+                        {% endif %}
                         <span class="lever"></span>
                         Contains soy
                     </label>
                 </div>
                 <div class="switch">
                     <label>
+                        {% if recipe.has_wheat == "on" %}
+                        <input id="has_wheat" name="has_wheat" type="checkbox" checked>
+                        {% else %}
                         <input id="has_wheat" name="has_wheat" type="checkbox">
+                        {% endif %}
                         <span class="lever"></span>
                         Contains wheat
                     </label>
