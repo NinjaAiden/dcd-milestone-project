@@ -1,10 +1,10 @@
 {% extends 'base.html'%} {% block content %}
 <div class="container">
     <div class=" mb-3 row">
-        <h3 class="mt-3 mb-3">Add Recipe</h3>
+        <h3 class="mt-3 mb-3">Edit Recipe</h3>
     </div>
     <div class="row">
-        <form action="{{ url_for('insert_recipe') }}" method="POST" class="col-12">
+        <form action="{{ url_for('update_recipe' , recipe_id=recipe._id) }}" method="POST" class="col-12">
             <div class="row border p-2 mb-2">
                 <!-- recipe title input -->
                 <div class="col-8">
