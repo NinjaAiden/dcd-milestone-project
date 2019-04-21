@@ -1,16 +1,17 @@
 {% extends 'base.html'%} {% block content %}
 <div class="container">
     <div class=" mb-3 row">
-        <h3 class="mt-3 mb-3">Edit Recipe</h3>
+        <h3 class="mt-3 mb-3">Add Recipe</h3>
     </div>
     <div class="row">
-        <form action="{{ url_for('update_recipe' , recipe_id=recipe._id) }}" method="POST" class="col-12">
-            <!-- row for title and cuisine type -->
+        <form action="{{ url_for('insert_recipe') }}" method="POST" class="col-12">
             <div class="row border p-2 mb-2">
+                <!-- recipe title input -->
                 <div class="col-8">
                     <input class="col-9" id="recipe_title" name="recipe_title" type="text" value="{{recipe.recipe_title}}" required>
                     <label for="icon_prefix">Recipe Name</label>
                 </div>
+                <!-- cuisine selector -->
                 <div class="col-4">
                     <select id="cuisine" name="cuisine_type" required>
                         {% if recipe.cuisine_type %}
@@ -24,49 +25,112 @@
                     </select>
                     <label>Cuisine Origin</label>
                 </div>
+                <!-- cook time input -->
                 <div class="col-8">
                     <input class="col-6" id="cook_time" name="cook_time" type="text" value="{{recipe.cook_time}}" required>
                     <label for="icon_prefix">Cooking Time</label>
                 </div>
             </div>
-            <!-- main container for ingredients and method lists -->
-            <div class="row border">
-                <!-- ingredients list -->
-                <div class="col-12">
-                    <label class="mt-3">Ingredients</label>
-                    <div class="input-field">
+            <!-- ingredients list -->
+            <p>Ingredients</p>
+            <div class="row border py-2">
+                <div class="col-12" id="ingredient_outer">
+                    <div class="input-field mt-2">
+                        <input class="col-11 mb-1" id="ingredient_field" name="ingredient_field" type="text">
+                        <button class="mb-2" onclick="createIngredient(); return false;">Add Ingredient</button>
                         {% for ingredient in recipe.ingredients_list %}
-                        <input class="col-11 mb-1" name="ingredient" type="text" value="{{ingredient}}"> {% endfor %}
-                    </div>
-                    <!-- method list -->
-                    <div class="col-12">
-                        <label class="mt-3">Method</label>
-                        <div class="input-field">
-                            {% for met in recipe.method_list %}
-                            <textarea class="col-11" name="method" rows="3" cols="100%">{{met}}</textarea> {% endfor %}
-                        </div>
+                            <input class="col-11 mb-1" name="ingredient" type="text" value="{{ingredient}}"> 
+                        {% endfor %}
                     </div>
                 </div>
-                <!-- vegan / vegetarian switches -->
-                <div class="row">
-                    <div class="switch mr-3 ml-3">
-                        <label>
+            </div>
+            <!-- method list -->
+            <p class="mt-2">Method</p>
+            <div class="row border py-2">
+                <div class="col-12" id="method_outer">
+                    <div class="input-field">
+                        <textarea class="col-11" id="method_field" name="method_field" rows="3" cols="100%"></textarea>
+                        <button class="mb-2" onclick="createMethod(); return false;">Add Method</button>
+                        {% for met in recipe.method_list %}
+                            <textarea class="col-11" name="method" rows="3" cols="100%">{{met}}</textarea> 
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <!-- information checkboxes -->
+            <p class="mt-3">Additional information</p>
+            <div class="row border py-1">
+                <div class="switch mx-3">
+                    <label>
                         <input id="is_vegetarian" name="is_vegetarian" type="checkbox">
                         <span class="lever"></span>
                         Vegetarian
                     </label>
-                    </div>
-                    <div class="switch">
-                        <label>
+                </div>
+                <div class="switch">
+                    <label>
                         <input id="is_vegan" name="is_vegan" type="checkbox">
                         <span class="lever"></span>
                         Vegan
                     </label>
-                    </div>
+                </div>
+                <div class="switch mx-3">
+                    <label>
+                        <input id="has_gluten" name="has_gluten" type="checkbox">
+                        <span class="lever"></span>
+                        Contains gluten
+                    </label>
                 </div>
             </div>
-            <div class="row">
-                <button type="submit" id="submitButton">Update Recipe</button>
+            <!-- allergen checkboxes -->
+            <p class='mt-3'>Allergen information</p>
+            <div class="row border py-1">
+                <div class="switch mx-3">
+                    <label>
+                        <input id="has_fish" name="has_fish" type="checkbox">
+                        <span class="lever"></span>
+                        Contains fish
+                    </label>
+                </div>
+                <div class="switch">
+                    <label>
+                        <input id="has_nuts" name="has_nuts" type="checkbox">
+                        <span class="lever"></span>
+                        Contains nuts
+                    </label>
+                </div>
+                <div class="switch mx-3">
+                    <label>
+                        <input id="has_milk" name="has_milk" type="checkbox">
+                        <span class="lever"></span>
+                        Contains milk
+                    </label>
+                </div>
+                <div class="switch">
+                    <label>
+                        <input id="has_shellfish" name="has_shellfish" type="checkbox">
+                        <span class="lever"></span>
+                        Contains shellfish
+                    </label>
+                </div>
+                <div class="switch mx-3">
+                    <label>
+                        <input id="has_soy" name="has_soy" type="checkbox">
+                        <span class="lever"></span>
+                        Contains soy
+                    </label>
+                </div>
+                <div class="switch">
+                    <label>
+                        <input id="has_wheat" name="has_wheat" type="checkbox">
+                        <span class="lever"></span>
+                        Contains wheat
+                    </label>
+                </div>
+            </div>
+            <!-- submit button -->
+            <div class="row my-2">
+                <button type="submit" id="submitButton">Add Recipe</button>
                 </button>
             </div>
         </form>
