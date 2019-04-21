@@ -15,6 +15,7 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/get_recipes')
 def get_recipes():
+    
     return render_template('recipes.html',
         recipes=mongo.db.recipes.find().sort("recipe_title", 1))
 
@@ -118,40 +119,9 @@ def insert_recipe():
     else:
         vegan = 'off'
     
-    if request.form.get('has_gluten', False):
-        gluten = 'on'
-    else:
-        gluten = 'off'
+    allergens = []
     
-    if request.form.get('has_fish', False):
-        fish = 'on'
-    else:
-        fish = 'off'
-    
-    if request.form.get('has_nuts', False):
-        nuts = 'on'
-    else:
-        nuts = 'off'
-    
-    if request.form.get('has_milk', False):
-        milk = 'on'
-    else:
-        milk= 'off'
-    
-    if request.form.get('has_shellfish', False):
-        shellfish = 'on'
-    else:
-        shellfish = 'off'
-    
-    if request.form.get('has_soy', False):
-        soy = 'on'
-    else:
-        soy = 'off'
-    
-    if request.form.get('has_wheat', False):
-        wheat = 'on'
-    else:
-        wheat = 'off'
+    get_allergen_info(allergens)
     
     # check if user is signed in
     author = ''
@@ -176,13 +146,7 @@ def insert_recipe():
         # checkbox list
         "is_vegetarian": vegetarian,
         "is_vegan": vegan,
-        "has_gluten": gluten,
-        "has_fish": fish,
-        "has_nuts": nuts,
-        "has_milk": milk,
-        "has_shellfish": shellfish,
-        "has_soy": soy,
-        "has_wheat": wheat,
+        "allergen_info": allergens,
         "upvotes": "0",
         "upvoted_by": [],
         "created": datetime.now()
@@ -223,7 +187,6 @@ def update_recipe(recipe_id):
         else:
             method_list.append(m)
     
-    # Reorganise all data into one dictionary before inserting into database
     if request.form.get('is_vegetarian', False):
         vegetarian = 'on'
     else:
@@ -234,40 +197,9 @@ def update_recipe(recipe_id):
     else:
         vegan = 'off'
     
-    if request.form.get('has_gluten', False):
-        gluten = 'on'
-    else:
-        gluten = 'off'
+    allergens = []
     
-    if request.form.get('has_fish', False):
-        fish = 'on'
-    else:
-        fish = 'off'
-    
-    if request.form.get('has_nuts', False):
-        nuts = 'on'
-    else:
-        nuts = 'off'
-    
-    if request.form.get('has_milk', False):
-        milk = 'on'
-    else:
-        milk= 'off'
-    
-    if request.form.get('has_shellfish', False):
-        shellfish = 'on'
-    else:
-        shellfish = 'off'
-    
-    if request.form.get('has_soy', False):
-        soy = 'on'
-    else:
-        soy = 'off'
-    
-    if request.form.get('has_wheat', False):
-        wheat = 'on'
-    else:
-        wheat = 'off'
+    get_allergen_info(allergens)
     
     author = ''
     
@@ -290,13 +222,7 @@ def update_recipe(recipe_id):
         # checkbox list
         "is_vegetarian": vegetarian,
         "is_vegan": vegan,
-        "has_gluten": gluten,
-        "has_fish": fish,
-        "has_nuts": nuts,
-        "has_milk": milk,
-        "has_shellfish": shellfish,
-        "has_soy": soy,
-        "has_wheat": wheat
+        "allergen_info": allergens
         }
     })
     
@@ -342,6 +268,45 @@ def upvote_recipe(recipe_id):
     })
     
     return redirect(url_for('view_recipe', recipe_id=recipe['_id']))
+
+def get_allergen_info(allergens):
+    
+    if request.form.get('has_gluten', False):
+        allergens.append('gluten')
+    else:
+        pass
+    
+    if request.form.get('has_fish', False):
+        allergens.append('fish')
+    else:
+        pass
+    
+    if request.form.get('has_nuts', False):
+        allergens.append('nuts')
+    else:
+        pass
+    
+    if request.form.get('has_milk', False):
+        allergens.append('milk')
+    else:
+        pass
+    
+    if request.form.get('has_shellfish', False):
+        allergens.append('shellfish')
+    else:
+        pass
+    
+    if request.form.get('has_soy', False):
+        allergens.append('soy')
+    else:
+        pass
+    
+    if request.form.get('has_wheat', False):
+        allergens.append('wheat')
+    else:
+        pass
+    
+    return allergens
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

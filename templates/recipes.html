@@ -22,6 +22,17 @@
         <p class='mr-3 text-danger'>Vegan</p>
         {% endif %}
     </div>
+    <div class="row ml-3 col-11">
+        <!-- display allergen information -->
+        <p class="mr-1">Contains:</p>
+        {% if not recipe.allergen_info %}
+        <p class="mr-1"> no allergens</p>
+        {% else %}
+        {% for allergen in recipe.allergen_info %}
+        <p class='mr-3 text-danger'>{{allergen}}</p>
+        {% endfor %}
+        {% endif %}
+    </div>
 </div>
 
 {% endfor %} {% endblock %}
