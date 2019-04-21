@@ -108,9 +108,6 @@ def insert_recipe():
         method_list.append(m)
     
     # check if checkboxes are checked
-    
-    author = ''
-    
     if request.form.get('is_vegetarian', False):
         vegetarian = 'on'
     else:
@@ -121,8 +118,42 @@ def insert_recipe():
     else:
         vegan = 'off'
     
-    # check if user is signed in
+    if request.form.get('has_gluten', False):
+        gluten = 'on'
+    else:
+        gluten = 'off'
     
+    if request.form.get('has_fish', False):
+        fish = 'on'
+    else:
+        fish = 'off'
+    
+    if request.form.get('has_nuts', False):
+        nuts = 'on'
+    else:
+        nuts = 'off'
+    
+    if request.form.get('has_milk', False):
+        milk = 'on'
+    else:
+        milk= 'off'
+    
+    if request.form.get('has_shellfish', False):
+        shellfish = 'on'
+    else:
+        shellfish = 'off'
+    
+    if request.form.get('has_soy', False):
+        soy = 'on'
+    else:
+        soy = 'off'
+    
+    if request.form.get('has_wheat', False):
+        wheat = 'on'
+    else:
+        wheat = 'off'
+    
+    # check if user is signed in
     author = ''
     
     if 'username' in session:
@@ -144,6 +175,13 @@ def insert_recipe():
         "method_list": method_list, # dictionary for method
         "is_vegetarian": vegetarian,
         "is_vegan": vegan,
+        "has_gluten": gluten,
+        "has_fish": fish,
+        "has_nuts": nuts,
+        "has_milk": milk,
+        "has_shellfish": shellfish,
+        "has_soy": soy,
+        "has_wheat": wheat,
         "upvotes": "0",
         "upvoted_by": [],
         "created": datetime.now()
@@ -187,9 +225,6 @@ def update_recipe(recipe_id):
     # Reorganise all data into one dictionary before inserting into database
     
     author = ''
-    
-    vegetarian = ''
-    vegan = ''
     
     if request.form.get('is_vegetarian', False):
         vegetarian = 'on'
