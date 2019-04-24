@@ -19,6 +19,19 @@ def get_recipes():
     return render_template('recipes.html',
         recipes=mongo.db.recipes.find().sort("recipe_title", 1))
 
+@app.route('/newest_recipes')
+def newest_recipes():
+    
+    return render_template('recipes.html',
+        recipes=mongo.db.recipes.find().sort("created", 1))
+
+
+@app.route('/upvoted_recipes')
+def upvoted_recipes():
+    
+    return render_template('recipes.html',
+        recipes=mongo.db.recipes.find().sort("upvotes", -1))
+
 # login page
 @app.route('/login', methods=['GET','POST'])
 def login():
@@ -147,7 +160,7 @@ def insert_recipe():
         "is_vegetarian": vegetarian,
         "is_vegan": vegan,
         "allergen_info": allergens,
-        "upvotes": "0",
+        "upvotes": 0,
         "upvoted_by": [],
         "created": datetime.now()
     }
