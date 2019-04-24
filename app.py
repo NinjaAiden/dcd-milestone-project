@@ -23,7 +23,7 @@ def get_recipes():
 def newest_recipes():
     
     return render_template('recipes.html',
-        recipes=mongo.db.recipes.find().sort("created", 1))
+        recipes=mongo.db.recipes.find().sort("created", -1))
 
 
 @app.route('/upvoted_recipes')
@@ -255,8 +255,7 @@ def upvote_recipe(recipe_id):
     # get list of upvoters
     upvoters = recipe['upvoted_by']
     
-    # get number of upvotes and parse to integer
-    upvote_int = int(recipe['upvotes'])
+    upvotes = recipe['upvotes']
     
     # if not voted for this recipe append current user to list of upvoters
     current_upvoter = session['username']
@@ -264,19 +263,16 @@ def upvote_recipe(recipe_id):
         upvoters.append(current_upvoter)
         flash("Thank you for your vote")
         # update number of upvotes
-        upvote_int +=1
+        upvotes +=1
     else:
         flash("You have already voted for this recipe")
-    
-    # parse upvotes back to string
-    upvote_string= str(upvote_int)
     
     # update database information
     recipes = mongo.db.recipes
     recipes.update_one( {'_id': ObjectId(recipe_id)},
     { '$set': {
         "upvoted_by": upvoters,
-        "upvotes": upvote_string
+        "upvotes": upvotes
         }
     })
     
