@@ -84,7 +84,7 @@
                 </div>
                 <div class="switch mx-3">
                     <label>
-                        {% if recipe.has_gluten == "on" %}
+                        {% if "gluten" in recipe.allergen_info %}
                         <input id="has_gluten" name="has_gluten" type="checkbox" checked>
                         {% else %}
                         <input id="has_gluten" name="has_gluten" type="checkbox">
@@ -99,7 +99,7 @@
             <div class="row border py-1">
                 <div class="switch mx-3">
                     <label>
-                        {% if recipe.has_fish == "on" %}
+                        {% if "fish" in recipe.allergen_info %}
                         <input id="has_fish" name="has_fish" type="checkbox" checked>
                         {% else %}
                         <input id="has_fish" name="has_fish" type="checkbox">
@@ -110,7 +110,7 @@
                 </div>
                 <div class="switch">
                     <label>
-                        {% if recipe.has_nuts == "on" %}
+                        {% if "nuts" in recipe.allergen_info %}
                         <input id="has_nuts" name="has_nuts" type="checkbox" checked>
                         {% else %}
                         <input id="has_nuts" name="has_nuts" type="checkbox">
@@ -121,7 +121,7 @@
                 </div>
                 <div class="switch mx-3">
                     <label>
-                        {% if recipe.has_milk == "on" %}
+                        {% if "milk" in recipe.allergen_info %}
                         <input id="has_milk" name="has_milk" type="checkbox" checked>
                         {% else %}
                         <input id="has_milk" name="has_milk" type="checkbox">
@@ -132,7 +132,7 @@
                 </div>
                 <div class="switch">
                     <label>
-                        {% if recipe.has_shellfish == "on" %}
+                        {% if "shellfish" in recipe.allergen_info %}
                         <input id="has_shellfish" name="has_shellfish" type="checkbox" checked>
                         {% else %}
                         <input id="has_shellfish" name="has_shellfish" type="checkbox">
@@ -143,7 +143,7 @@
                 </div>
                 <div class="switch mx-3">
                     <label>
-                        {% if recipe.has_soy == "on" %}
+                        {% if "soy" in recipe.allergen_info %}
                         <input id="has_soy" name="has_soy" type="checkbox" checked>
                         {% else %}
                         <input id="has_soy" name="has_soy" type="checkbox">
@@ -154,7 +154,7 @@
                 </div>
                 <div class="switch">
                     <label>
-                        {% if recipe.has_wheat == "on" %}
+                        {% if "wheat" in recipe.allergen_info %}
                         <input id="has_wheat" name="has_wheat" type="checkbox" checked>
                         {% else %}
                         <input id="has_wheat" name="has_wheat" type="checkbox">
