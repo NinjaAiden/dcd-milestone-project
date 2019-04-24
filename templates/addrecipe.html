@@ -7,24 +7,24 @@
         <form action="{{ url_for('insert_recipe') }}" method="POST" class="col-12">
             <div class="row border p-2 mb-2">
                 <!-- recipe title input -->
-                <div class="col-8">
-                    <input class="col-9" id="recipe_title" name="recipe_title" type="text" required>
-                    <label for="icon_prefix">Recipe Name</label>
+                <div class="col-11">
+                    <input class="col-10" id="recipe_title" name="recipe_title" type="text" required>
+                    <label for="recipe_title">Recipe Name</label>
+                </div>
+                <!-- cook time input -->
+                <div class="col-6">
+                    <input class="col-8" id="cook_time" name="cook_time" type="text" required>
+                    <label for="cook_time">Cooking Time</label>
                 </div>
                 <!-- cuisine selector -->
-                <div class="col-4">
+                <div class="col-5">
                     <select id="cuisine" name="cuisine_type" required>
                         <option value="" disabled selected>Choose Cuisine</option>
                         {% for cuis in cuisine %}
                         <option value="{{cuis.cuisine_type}}">{{cuis.cuisine_type.capitalize()}}</option>
                         {% endfor %}
                     </select>
-                    <label>Cuisine Origin</label>
-                </div>
-                <!-- cook time input -->
-                <div class="col-8">
-                    <input class="col-6" id="cook_time" name="cook_time" type="text" required>
-                    <label for="icon_prefix">Cooking Time</label>
+                    <label for="cuisine_slector">Cuisine Origin</label>
                 </div>
             </div>
             <!-- ingredients list -->
