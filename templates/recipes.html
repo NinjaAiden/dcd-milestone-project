@@ -1,10 +1,11 @@
 {% extends 'base.html'%} {% block content %}
 
 <nav class="navbar navbar-expand-lg navbar-light navbar-blue">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="{{url_for('get_recipes')}}">QuickSearch</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#quickSearchBar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="quickSearchBar">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
                 <a class="nav-link" href="{{url_for('get_recipes')}}">Display recipes by: <span class="sr-only"></span></a>
