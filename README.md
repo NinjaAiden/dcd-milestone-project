@@ -25,6 +25,7 @@ number of criteria.
 ## UX
 
 - In the 'Add a recipe' page, pushing the 'Add ingredient' or 'Add method' button, creates a new editable field to allow for editing before submission.
+- Input fields clear after submission to make it easier to input the next item.
 - Buttons in the 'View recipe' pages are colour coded to avoid accidental deletion.
 - The recipe overview displays whether a recipe is vegetarian or vegan, colour 
     coded to differentiate them.

@@ -9,6 +9,7 @@ function createIngredient() {
     var element = document.getElementById("ingredient_outer");
     element.appendChild(ing);
     element.appendChild(newLine);
+    document.getElementById("ingredient_field").value = "";
 }
 
 function createMethod() {
@@ -22,6 +23,7 @@ function createMethod() {
     var element = document.getElementById("method_outer");
     element.appendChild(met);
     element.appendChild(newLine);
+    document.getElementById("method_field").value = "";
 }
 
 function confirmDelete() {
