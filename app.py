@@ -12,6 +12,8 @@ app.config["SECRET_KEY"] = 'SECRET_KEY'
 
 mongo = PyMongo(app)
 
+per_page = 5
+
 # main page
 @app.route('/')
 @app.route('/get_recipes')
@@ -24,9 +26,9 @@ def get_recipes():
     
     page = request.args.get(get_page_parameter(), type=int, default=1)
     
-    recipes = mongo.db.recipes.find().sort("recipe_title", 1)
+    recipes = mongo.db.recipes.find().sort("recipe_title", 1).skip((page - 1) * per_page).limit(per_page)
     
-    pagination = Pagination(page=page, per_page=5, total=recipes.count(), search=search, record_name='recipes')
+    pagination = Pagination(page=page, per_page=per_page, total=recipes.count(), search=search, record_name='recipes', css_framework='bootstrap4')
     
     return render_template('recipes.html',
         recipes=recipes,
@@ -36,27 +38,79 @@ def get_recipes():
 @app.route('/newest_recipes')
 def newest_recipes():
     
+    search = False
+    q = request.args.get('q')
+    if q:
+        search = True
+    
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    
+    recipes=mongo.db.recipes.find().sort("created", -1).skip((page - 1) * per_page).limit(per_page)
+    
+    pagination = Pagination(page=page, per_page=per_page, total=recipes.count(), search=search, record_name='recipes', css_framework='bootstrap4')
+    
     return render_template('recipes.html',
-        recipes=mongo.db.recipes.find().sort("created", -1))
+        recipes=recipes,
+        pagination=pagination
+        )
 
 
 @app.route('/upvoted_recipes')
 def upvoted_recipes():
     
+    search = False
+    q = request.args.get('q')
+    if q:
+        search = True
+    
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    
+    recipes=mongo.db.recipes.find().sort("upvotes", -1).skip((page - 1) * per_page).limit(per_page)
+    
+    pagination = Pagination(page=page, per_page=per_page, total=recipes.count(), search=search, record_name='recipes', css_framework='bootstrap4')
+    
     return render_template('recipes.html',
-        recipes=mongo.db.recipes.find().sort("upvotes", -1))
+        recipes=recipes,
+        pagination=pagination
+       )
 
 @app.route('/vegetarian_recipes')
 def vegetarian_recipes():
     
+    search = False
+    q = request.args.get('q')
+    if q:
+        search = True
+    
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    
+    recipes=mongo.db.recipes.find({"is_vegetarian": "on"}).skip((page - 1) * per_page).limit(per_page)
+    
+    pagination = Pagination(page=page, per_page=per_page, total=recipes.count(), search=search, record_name='recipes', css_framework='bootstrap4')
+    
     return render_template('recipes.html',
-        recipes=mongo.db.recipes.find({"is_vegetarian": "on"}))
+        recipes=recipes,
+        pagination=pagination
+        )
 
 @app.route('/vegan_recipes')
 def vegan_recipes():
     
+    search = False
+    q = request.args.get('q')
+    if q:
+        search = True
+    
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    
+    recipes=mongo.db.recipes.find({"is_vegan": "on"}).sort("upvotes", -1).skip((page - 1) * per_page).limit(per_page)
+    
+    pagination = Pagination(page=page, per_page=per_page, total=recipes.count(), search=search, record_name='recipes', css_framework='bootstrap4')
+    
     return render_template('recipes.html',
-        recipes=mongo.db.recipes.find({"is_vegan": "on"}))
+        recipes=recipes,
+        pagination=pagination
+        )
 
 # login page
 @app.route('/login', methods=['GET','POST'])
