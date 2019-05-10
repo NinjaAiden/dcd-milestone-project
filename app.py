@@ -3,6 +3,7 @@ from flask import Flask, render_template, redirect, request, url_for, session, f
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from datetime import datetime
+from flask_paginate import Pagination, get_page_parameter
 
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'dcd-cookbook'
@@ -16,8 +17,21 @@ mongo = PyMongo(app)
 @app.route('/get_recipes')
 def get_recipes():
     
+    search = False
+    q = request.args.get('q')
+    if q:
+        search = True
+    
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    
+    recipes = mongo.db.recipes.find().sort("recipe_title", 1)
+    
+    pagination = Pagination(page=page, per_page=5, total=recipes.count(), search=search, record_name='recipes')
+    
     return render_template('recipes.html',
-        recipes=mongo.db.recipes.find().sort("recipe_title", 1))
+        recipes=recipes,
+        pagination=pagination
+        )
 
 @app.route('/newest_recipes')
 def newest_recipes():
@@ -290,6 +304,7 @@ def upvote_recipe(recipe_id):
     
     return redirect(url_for('view_recipe', recipe_id=recipe['_id']))
 
+# helper function for allergen information
 def get_allergen_info(allergens):
     
     if request.form.get('has_gluten', False):
