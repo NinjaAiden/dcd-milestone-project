@@ -1,6 +1,7 @@
 html,
 body {
     height: 100%;
+    background-color: #f0f8ff;
 }
 
 .center-elements {
@@ -10,9 +11,8 @@ body {
 }
 
 .main-container {
-    min-height: 100%;
+    min-height: 90%;
     width: 100%;
-    background-color: #f0f8ff;
 }
 
 .border {

@@ -29,7 +29,11 @@
     </div>
 </nav>
 
-{{pagination.info}} {{ pagination.links }} {% for recipe in recipes %}
+<div class="container mx-1">
+    <div class="row my-2">{{ pagination.info }}</div>
+    <div class="row my-2">{{ pagination.links }}</div>
+</div>
+{% for recipe in recipes %}
 <div class="container border my-2">
     <div class="row col-11">
         <div class="row mt-3 ml-3 col-10">
@@ -64,4 +68,8 @@
     </div>
 </div>
 
-{% endfor %} {{ pagination.links }} {% endblock %}
+{% endfor %}
+
+<div class="container my-2">{{ pagination.links }}</div>
+
+{% endblock %}

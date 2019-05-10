@@ -12,6 +12,7 @@ app.config["SECRET_KEY"] = 'SECRET_KEY'
 
 mongo = PyMongo(app)
 
+# results per page for pagination
 per_page = 5
 
 # main page
