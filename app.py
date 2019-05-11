@@ -29,7 +29,7 @@ def get_recipes():
     
     recipes = mongo.db.recipes.find().sort("recipe_title", 1).skip((page - 1) * per_page).limit(per_page)
     
-    pagination = Pagination(page=page, per_page=per_page, total=recipes.count(), search=search, record_name='recipes', css_framework='bootstrap4')
+    pagination = Pagination(page=page, per_page=per_page, total=recipes.count(), search=search, record_name='recipes', bs_version=4)
     
     return render_template('recipes.html',
         recipes=recipes,
@@ -48,7 +48,7 @@ def newest_recipes():
     
     recipes=mongo.db.recipes.find().sort("created", -1).skip((page - 1) * per_page).limit(per_page)
     
-    pagination = Pagination(page=page, per_page=per_page, total=recipes.count(), search=search, record_name='recipes', css_framework='bootstrap4')
+    pagination = Pagination(page=page, per_page=per_page, total=recipes.count(), search=search, record_name='recipes', bs_version=4)
     
     return render_template('recipes.html',
         recipes=recipes,
@@ -68,7 +68,7 @@ def upvoted_recipes():
     
     recipes=mongo.db.recipes.find().sort("upvotes", -1).skip((page - 1) * per_page).limit(per_page)
     
-    pagination = Pagination(page=page, per_page=per_page, total=recipes.count(), search=search, record_name='recipes', css_framework='bootstrap4')
+    pagination = Pagination(page=page, per_page=per_page, total=recipes.count(), search=search, record_name='recipes', bs_version=4)
     
     return render_template('recipes.html',
         recipes=recipes,
@@ -87,7 +87,7 @@ def vegetarian_recipes():
     
     recipes=mongo.db.recipes.find({"is_vegetarian": "on"}).skip((page - 1) * per_page).limit(per_page)
     
-    pagination = Pagination(page=page, per_page=per_page, total=recipes.count(), search=search, record_name='recipes', css_framework='bootstrap4')
+    pagination = Pagination(page=page, per_page=per_page, total=recipes.count(), search=search, record_name='recipes', bs_version=4)
     
     return render_template('recipes.html',
         recipes=recipes,
@@ -106,7 +106,7 @@ def vegan_recipes():
     
     recipes=mongo.db.recipes.find({"is_vegan": "on"}).sort("upvotes", -1).skip((page - 1) * per_page).limit(per_page)
     
-    pagination = Pagination(page=page, per_page=per_page, total=recipes.count(), search=search, record_name='recipes', css_framework='bootstrap4')
+    pagination = Pagination(page=page, per_page=per_page, total=recipes.count(), search=search, record_name='recipes', bs_version=4)
     
     return render_template('recipes.html',
         recipes=recipes,

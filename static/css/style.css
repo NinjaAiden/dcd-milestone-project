@@ -32,3 +32,15 @@ body {
     font-size: 20px;
     background-color: #e3f2fd;
 }
+
+.pagination-page-info {
+    width: 40em;
+    margin: .5em;
+    margin-left: 0;
+}
+.pagination-page-info b {
+    color: black;
+    padding-left: 2px;
+    padding: .1em .25em;
+    font-size: 110%;
+}
