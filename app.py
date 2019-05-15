@@ -164,7 +164,7 @@ def register():
 
 @app.route('/custom_search')
 def custom_search():
-    return render_template('search.html')
+    return render_template('search.html',cuisine=mongo.db.cuisine.find())
 
 # route for logging out
 @app.route('/logout')

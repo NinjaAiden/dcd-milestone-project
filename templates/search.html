@@ -7,12 +7,27 @@
         <form action="{{ url_for('insert_recipe') }}" method="POST" class="col-12">
             <div class="row border p-2 mb-2">
                 <!-- cook time input -->
-                <div class="col-6">
-                    <input class="col-8" id="cook_time" name="cook_time" type="text" required>
-                    <label for="cook_time">Cooking Time</label>
+                <div class="col-5">
+                    <select id="cookTimeSearch" name="cookTimeSearch">
+                        <option value="" disabled selected>
+                            Cooking Time
+                        </option>
+                        <option value="<30">
+                            Less than 30 mins
+                        </option>
+                        <option value=">=30 <45">
+                            30 - 45 mins
+                        </option>
+                        <option value=">=45 <60">
+                            45 - 60 mins
+                        </option>
+                        <option value=">=60">
+                            Over 1 Hour
+                        </option>
+                    </select>
                 </div>
                 <!-- cuisine selector -->
-                <div class="col-5">
+                <div class="col-7">
                     <select id="cuisine" name="cuisine_type" required>
                         <option value="" disabled selected>Choose Cuisine</option>
                         {% for cuis in cuisine %}
@@ -27,8 +42,7 @@
             <div class="row border py-2">
                 <div class="col-12" id="ingredient_outer">
                     <div class="input-field mt-2">
-                        <input class="col-11 mb-1" id="ingredient_field" name="ingredient_field" type="text">
-                        <button class="mb-2" onclick="createIngredient(); return false;">Add Ingredient</button>
+                        <input class="col-11 mb-1" id="ingredient_field" placeholder="Input an ingredient" type="text">
                     </div>
                 </div>
             </div>
@@ -53,7 +67,7 @@
                     <label>
                         <input id="has_gluten" name="has_gluten" type="checkbox">
                         <span class="lever"></span>
-                        Contains gluten
+                        Gluten free
                     </label>
                 </div>
             </div>
@@ -64,42 +78,42 @@
                     <label>
                         <input id="has_fish" name="has_fish" type="checkbox">
                         <span class="lever"></span>
-                        Contains fish
+                        Fish free
                     </label>
                 </div>
                 <div class="switch">
                     <label>
                         <input id="has_nuts" name="has_nuts" type="checkbox">
                         <span class="lever"></span>
-                        Contains nuts
+                        Nut free
                     </label>
                 </div>
                 <div class="switch mx-3">
                     <label>
                         <input id="has_milk" name="has_milk" type="checkbox">
                         <span class="lever"></span>
-                        Contains milk
+                        Dairy free
                     </label>
                 </div>
                 <div class="switch">
                     <label>
                         <input id="has_shellfish" name="has_shellfish" type="checkbox">
                         <span class="lever"></span>
-                        Contains shellfish
+                        Shellfish free
                     </label>
                 </div>
                 <div class="switch mx-3">
                     <label>
                         <input id="has_soy" name="has_soy" type="checkbox">
                         <span class="lever"></span>
-                        Contains soy
+                        Soy free
                     </label>
                 </div>
                 <div class="switch">
                     <label>
                         <input id="has_wheat" name="has_wheat" type="checkbox">
                         <span class="lever"></span>
-                        Contains wheat
+                        Wheat free
                     </label>
                 </div>
             </div>
