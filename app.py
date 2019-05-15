@@ -162,6 +162,10 @@ def register():
         
     return render_template('register.html')
 
+@app.route('/custom_search')
+def custom_search():
+    return render_template('search.html')
+
 # route for logging out
 @app.route('/logout')
 def logout():
