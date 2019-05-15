@@ -29,7 +29,7 @@ def get_recipes():
     
     recipes = mongo.db.recipes.find().sort("recipe_title", 1).skip((page - 1) * per_page).limit(per_page)
     
-    pagination = Pagination(page=page, per_page=per_page, total=recipes.count(), search=search, record_name='recipes', bs_version=4)
+    pagination = Pagination(page=page, per_page=per_page, total=recipes.count(), search=search, record_name='recipes', css_framework="bootstrap", bs_version=4)
     
     return render_template('recipes.html',
         recipes=recipes,

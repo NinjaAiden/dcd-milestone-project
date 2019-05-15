@@ -31,7 +31,9 @@
 
 <div class="container mx-1">
     <div class="row my-2">{{ pagination.info }}</div>
-    <ul class="my-2">{{ pagination.links }}</ul>
+    <nav aria-label="Page navigation">
+        {{ pagination.links }}
+    </nav>
 </div>
 {% for recipe in recipes %}
 <div class="container border my-2">
