@@ -24,11 +24,11 @@ body {
     color: #0600f6;
 }
 
-.view-bind{
+.view-bind {
     margin-right: 0;
 }
 
-.navbar-blue{
+.navbar-blue {
     font-size: 20px;
     background-color: #e3f2fd;
 }
@@ -38,6 +38,7 @@ body {
     margin: .5em;
     margin-left: 0;
 }
+
 .pagination-page-info b {
     color: black;
     padding-left: 2px;
