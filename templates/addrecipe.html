@@ -8,12 +8,12 @@
             <div class="row border p-2 mb-2">
                 <!-- recipe title input -->
                 <div class="col-11">
-                    <input class="col-10" id="recipe_title" name="recipe_title" type="text" required>
+                    <input class="col-10" id="recipe_title" name="recipe_title" placeholder="Enter a recipe title" type="text" required>
                     <label for="recipe_title">Recipe Name</label>
                 </div>
                 <!-- cook time input -->
                 <div class="col-6">
-                    <input class="col-8" id="cook_time" name="cook_time" type="text" required>
+                    <input class="col-8" id="cook_time" name="cook_time" placeholder="Enter cooking time" type="text" required>
                     <label for="cook_time">Cooking Time</label>
                 </div>
                 <!-- cuisine selector -->
@@ -32,7 +32,7 @@
             <div class="row border py-2">
                 <div class="col-12" id="ingredient_outer">
                     <div class="input-field mt-2">
-                        <input class="col-11 mb-1" id="ingredient_field" name="ingredient_field" type="text">
+                        <input class="col-11 mb-1" id="ingredient_field" name="ingredient_field" placeholder="Enter an ingredient" type="text">
                         <button class="mb-2" onclick="createIngredient(); return false;">Add Ingredient</button>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
             <div class="row border py-2">
                 <div class="col-12" id="method_outer">
                     <div class="input-field">
-                        <textarea class="col-11" id="method_field" name="method_field" rows="3" cols="100%"></textarea>
+                        <textarea class="col-11" id="method_field" name="method_field" rows="3" cols="100%" placeholder="Type a method step here"></textarea>
                         <button class="mb-2" onclick="createMethod(); return false;">Add Method</button>
                     </div>
                 </div>
