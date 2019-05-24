@@ -3,6 +3,18 @@
     <div class=" mb-3 row">
         <h3 class="mt-3 mb-3">Search For Recipes</h3>
     </div>
+
+    <!-- flash message display -->
+    {% with messages = get_flashed_messages() %} {% if messages %}
+    <div class="row">
+        <ul class=flashes>
+            {% for message in messages %}
+            <p class="bg-warning text-center">{{ message }}</p>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %} {% endwith %}
+
     <div class="row">
         <form action="{{ url_for('search_page') }}" method="POST" class="col-12">
             <div class="row border p-2 mb-2">
