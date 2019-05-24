@@ -29,6 +29,9 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="{{url_for('add_recipe')}}">Add a Recipe<span class="sr-only"></span></a>
                 </li>
+                 <li class="nav-item active">
+                    <a class="nav-link" href="{{url_for('custom_search')}}">Search<span class="sr-only"></span></a>
+                </li>
             </ul>
             <ul class="navbar-nav">
                 {% if 'username' in session %}
@@ -41,9 +44,6 @@
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="{{url_for('register')}}">Register<span class="sr-only"></span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{url_for('custom_search')}}">Search<span class="sr-only"></span></a>
                 </li>
                 {% endif %}
             </ul>

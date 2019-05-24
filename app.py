@@ -363,8 +363,49 @@ def upvote_recipe(recipe_id):
 def custom_search():	
     return render_template('search.html',cuisine=mongo.db.cuisine.find())
 
+@app.route('/search_page', methods=["POST"])
+def search_page():
+    
+    user_input = request.form.to_dict()
+    empty_flag = { # As in if no input is given
+        "cookTimeSearch": "",
+        "cuisineSearch": "",
+        "ingredientField": "",
+    }
+    if user_input == empty_flag:
+        return redirect(url_for('custom_search'))
+    ingredients = []
+    for key, val in user_input.items():
+        if 'ingredient' in key and len(val.strip()) > 0:
+            ingredients.append(val)
 
+    q = {}
+    q["$and"] = []
+    
+    if len(request.form['cookTimeSearch']) > 0:
+        q["$and"].append({"cook_time": {"$lt": request.form['cookTimeSearch'].strip()}})
+    
+    if q != {}:
+        recipes = mongo.db.recipes.find(q).sort([('created', -1)])
+        session['q'] = q
+        return redirect(url_for('search_results'))
 
+@app.route('/search_results', methods=["GET"])
+def search_results():
+    
+    q = session['q']
+    
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    
+    recipes=mongo.db.recipes.find(q).sort("created", -1).skip((page - 1) * per_page).limit(per_page)
+    
+    pagination = Pagination(page=page, per_page=per_page, total=recipes.count(), record_name='recipes', bs_version=4)
+    
+    return render_template('recipes.html',
+        recipes=recipes,
+        pagination=pagination
+        )
+    
 # helper function for allergen information
 def get_allergen_info(allergens):
     
