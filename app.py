@@ -373,6 +373,7 @@ def search_page():
         "ingredientField": "",
     }
     if user_input == empty_flag:
+        flash("No results found, please expand your request")
         return redirect(url_for('custom_search'))
     ingredients = []
     for key, val in user_input.items():
@@ -382,8 +383,13 @@ def search_page():
     q = {}
     q["$and"] = []
     
+    # search by cooking time
     if len(request.form['cookTimeSearch']) > 0:
         q["$and"].append({"cook_time": {"$lt": request.form['cookTimeSearch'].strip()}})
+    
+    # search by cuisine origin
+    if len(request.form['cuisineSearch']) > 0:
+        q["$and"].append({"cuisine_type": {"$regex": request.form['cuisineSearch'].strip().lower()}})
     
     if q != {}:
         recipes = mongo.db.recipes.find(q).sort([('created', -1)])
