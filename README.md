@@ -21,6 +21,12 @@ number of criteria.
 - Clicking on the up arrow in the full recipe view will allow an upvote of the recipe
 - Users cannot upvote their own recipes
 - Guests are unable to modify, upvote or delete recipes, only add or view them
+- There is a search page where users are able to search for recipes based on:
+1. Amount of time to cook
+2. Cuisine origin
+3. Ingredients
+4. Allergens
+- All search criteria are optional, but inputting nothing prompts a message asking for the user to try again
 
 ## UX
 
@@ -36,9 +42,9 @@ number of criteria.
 
 This data driven web application uses the following technologies:
 
+- Python was used for the majority of this application, using the flask framework for the backend code
 - MongoDB / NoSQL for the database
 - PyMongo was used to facilitate communication between MongoDB and the application
-- Python was used for the majority of this application, using the flask framework for the backend code
 - Bootstrap 4.0 was used for CSS styling, with a custom CSS overlay, which can be found under the static directory
 - HTML was used for visual purposes and creating forms to feed information into the back end
 - Javascript was used in some places to add or update elements of the user interface
