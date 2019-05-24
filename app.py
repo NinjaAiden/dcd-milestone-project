@@ -379,6 +379,10 @@ def search_page():
     for key, val in user_input.items():
         if 'ingredient' in key and len(val.strip()) > 0:
             ingredients.append(val)
+    
+    allergens = []
+    
+    get_allergen_info(allergens)
 
     q = {}
     q["$and"] = []
@@ -394,6 +398,10 @@ def search_page():
     # search by ingredient
     if len(request.form['ingredientField']) > 0:
         q["$and"].append({"ingredients_list": {"$regex": request.form['ingredientField'].strip().lower()}})
+    
+    # search for allergens
+    if allergens:
+         q["$and"].append({"allergen_info": {"$nin": allergens}})
     
     if q != {}:
         recipes = mongo.db.recipes.find(q).sort([('created', -1)])
