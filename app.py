@@ -391,6 +391,10 @@ def search_page():
     if len(request.form['cuisineSearch']) > 0:
         q["$and"].append({"cuisine_type": {"$regex": request.form['cuisineSearch'].strip().lower()}})
     
+    # search by ingredient
+    if len(request.form['ingredientField']) > 0:
+        q["$and"].append({"ingredients_list": {"$regex": request.form['ingredientField'].strip().lower()}})
+    
     if q != {}:
         recipes = mongo.db.recipes.find(q).sort([('created', -1)])
         session['q'] = q
