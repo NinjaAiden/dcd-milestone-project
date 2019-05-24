@@ -19,14 +19,14 @@
         <form action="{{ url_for('search_page') }}" method="POST" class="col-12">
             <div class="row border p-2 mb-2">
                 <!-- cook time input -->
-                <div class="col-5">
+                <div class="width-restriction">
                     <div class="input-field mt-2">
                         <input class="col-12 mb-1" name='cookTimeSearch' id="cookTimeSearch" placeholder="Input a desired cooking time" type="number">
                     </div>
                     <label for="cookTimeSearch">Cook Time</label>
                 </div>
                 <!-- cuisine selector -->
-                <div class="col-7">
+                <div class="width-restriction">
                     <div class="input-field mt-2">
                         <input class="col-12 mb-1" name='cuisineSearch' id="cuisineSearch" placeholder="Input a desired cuisine type" type="text">
                     </div>
