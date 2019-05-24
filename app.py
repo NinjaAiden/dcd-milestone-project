@@ -359,6 +359,12 @@ def upvote_recipe(recipe_id):
     
     return redirect(url_for('view_recipe', recipe_id=recipe['_id']))
 
+@app.route('/custom_search')	
+def custom_search():	
+    return render_template('search.html',cuisine=mongo.db.cuisine.find())
+
+
+
 # helper function for allergen information
 def get_allergen_info(allergens):
     

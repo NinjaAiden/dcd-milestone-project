@@ -1,0 +1,128 @@
+{% extends 'base.html'%} {% block content %}
+<div class="container">
+    <div class=" mb-3 row">
+        <h3 class="mt-3 mb-3">Search For Recipes</h3>
+    </div>
+    <div class="row">
+        <form action="{{ url_for('insert_recipe') }}" method="POST" class="col-12">
+            <div class="row border p-2 mb-2">
+                <!-- cook time input -->
+                <div class="col-5">
+                    <select id="cookTimeSearch" name="cookTimeSearch">	
+                        <option value="" disabled selected>	
+                            Cooking Time	
+                        </option>	
+                        <option value="<30">	
+                            Less than 30 mins	
+                        </option>	
+                        <option value=">=30 <45">	
+                            30 - 45 mins	
+                        </option>	
+                        <option value=">=45 <60">	
+                            45 - 60 mins	
+                        </option>	
+                        <option value=">=60">	
+                            Over 1 Hour	
+                        </option>	
+                    </select>
+                </div>
+                <!-- cuisine selector -->
+                <div class="col-7">
+                    <select id="cuisine" name="cuisine_type" required>	
+                        <option value="" disabled selected>Choose Cuisine</option>	
+                        {% for cuis in cuisine %}	
+                        <option value="{{cuis.cuisine_type}}">{{cuis.cuisine_type.capitalize()}}</option>	
+                        {% endfor %}	
+                    </select>
+                    <label for="cuisine_slector">Cuisine Origin</label>
+                </div>
+            </div>
+            <!-- ingredients list -->
+            <p>Ingredients</p>
+            <div class="row border py-2">
+                <div class="col-12" id="ingredient_outer">
+                    <div class="input-field mt-2">
+                        <input class="col-11 mb-1" id="ingredient_field" placeholder="Input an ingredient" type="text">
+                    </div>
+                </div>
+            </div>
+            <!-- information checkboxes -->
+            <p class="mt-3">Additional information</p>
+            <div class="row border py-1">
+                <div class="switch mx-3">
+                    <label>	
+                        <input id="is_vegetarian" name="is_vegetarian" type="checkbox">	
+                        <span class="lever"></span>	
+                        Vegetarian	
+                    </label>
+                </div>
+                <div class="switch">
+                    <label>	
+                        <input id="is_vegan" name="is_vegan" type="checkbox">	
+                        <span class="lever"></span>	
+                        Vegan	
+                    </label>
+                </div>
+                <div class="switch mx-3">
+                    <label>	
+                        <input id="has_gluten" name="has_gluten" type="checkbox">	
+                        <span class="lever"></span>	
+                        Gluten free	
+                    </label>
+                </div>
+            </div>
+            <!-- allergen checkboxes -->
+            <p class='mt-3'>Allergen information</p>
+            <div class="row border py-1">
+                <div class="switch mx-3">
+                    <label>	
+                        <input id="has_fish" name="has_fish" type="checkbox">	
+                        <span class="lever"></span>	
+                        Fish free	
+                    </label>
+                </div>
+                <div class="switch">
+                    <label>	
+                        <input id="has_nuts" name="has_nuts" type="checkbox">	
+                        <span class="lever"></span>	
+                        Nut free	
+                    </label>
+                </div>
+                <div class="switch mx-3">
+                    <label>	
+                        <input id="has_milk" name="has_milk" type="checkbox">	
+                        <span class="lever"></span>	
+                        Dairy free	
+                    </label>
+                </div>
+                <div class="switch">
+                    <label>	
+                        <input id="has_shellfish" name="has_shellfish" type="checkbox">	
+                        <span class="lever"></span>	
+                        Shellfish free	
+                    </label>
+                </div>
+                <div class="switch mx-3">
+                    <label>	
+                        <input id="has_soy" name="has_soy" type="checkbox">	
+                        <span class="lever"></span>	
+                        Soy free	
+                    </label>
+                </div>
+                <div class="switch">
+                    <label>	
+                        <input id="has_wheat" name="has_wheat" type="checkbox">	
+                        <span class="lever"></span>	
+                        Wheat free	
+                    </label>
+                </div>
+            </div>
+            <!-- submit button -->
+            <div class="row my-2">
+                <button type="submit" id="submitButton">Add Recipe</button>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
