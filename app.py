@@ -8,7 +8,7 @@ from flask_paginate import Pagination, get_page_parameter
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'dcd-cookbook'
 app.config["MONGO_URI"] = 'mongodb://admin:Xb0x3869@ds357955.mlab.com:57955/dcd-cookbook'
-SERCET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 mongo = PyMongo(app)
 
