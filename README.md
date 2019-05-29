@@ -52,6 +52,14 @@ This data driven web application uses the following technologies:
 - Javascript was used in some places to add or update elements of the user interface
 - Font awesome links were used for button icons
 
+## Testing
+
+- TDD was done using unit test to ensure all pages load properly and in the appropriate/expected language and format
+
+- More BDD was done with routing and refreshing pages, including navigating back and forth to ensure consitency and lack of issues
+
+- The search page was tested extensively to ensure all elements behave as expected with no issues, either by themselves or with each other
+
 ## Deployment
 
 This application is hosted on Heroku at: https://dcd-milestone-project.herokuapp.com/ In order to deploy this app to heroku, I needed to add a Procfile which tells heroku which language the app was written in and the name of the file that needs to be run - in this case this was app.py, I then set up a requirements.txt file which holds the dependencies that this app requires in order to run. Both the Procfile and requirements.txt file are committed to the repository and pushed to Heroku.
