@@ -57,10 +57,9 @@ This data driven web application uses the following technologies:
 This application is hosted on Heroku at: https://dcd-milestone-project.herokuapp.com/ In order to deploy this app to heroku, I needed to add a Procfile which tells heroku which language the app was written in and the name of the file that needs to be run - in this case this was app.py, I then set up a requirements.txt file which holds the dependencies that this app requires in order to run. Both the Procfile and requirements.txt file are committed to the repository and pushed to Heroku.
 
 I then had to set some environment variables in Heroku in order for the live URL to run.
-The following are configured under the hidden Config Vars:
+The following are configured under the hidden Config Vars in the heroku application settings tab:
 
 - IP: 0.0.0.0
 - PORT: 5000
-- SECRET_KEY: SECRET_KEY
 
-The application was then linked to the master branch of the Github repository for automatic synchronisation of commits
+The application was then linked to the master branch of the Github repository, through the heroku settings page, for automatic synchronisation of commits
