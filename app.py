@@ -8,7 +8,7 @@ from flask_paginate import Pagination, get_page_parameter
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'dcd-cookbook'
 app.config["MONGO_URI"] = 'mongodb://admin:Xb0x3869@ds357955.mlab.com:57955/dcd-cookbook'
-SECRET_KEY = os.environ.get('SECRET_KEY')
+app.config["SECRET_KEY"] = 'SECRET_KEY'
 
 mongo = PyMongo(app)
 
@@ -389,7 +389,7 @@ def search_page():
     
     # search by cooking time
     if len(request.form['cookTimeSearch']) > 0:
-        q["$and"].append({"cook_time": {"$lt": request.form['cookTimeSearch'].strip()}})
+        q["$and"].append({"cook_time": {"$lt": int(request.form['cookTimeSearch'].strip())}})
     
     # search by cuisine origin
     if len(request.form['cuisineSearch']) > 0:

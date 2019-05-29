@@ -63,4 +63,4 @@ The following are configured under the hidden Config Vars:
 - PORT: 5000
 - SECRET_KEY: SECRET_KEY
 
-The apllictaion was then linked to the master branch of the Github repository for automatic synchronisation of commits
+The application was then linked to the master branch of the Github repository for automatic synchronisation of commits
