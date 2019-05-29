@@ -124,3 +124,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+*.tgz
+Python-3.6.3/
