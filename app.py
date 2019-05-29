@@ -389,14 +389,12 @@ def search_page():
     
     # search by cooking time
     if len(request.form['cookTimeSearch']) > 0:
-        q["$and"].append({"cook_time": {"$lt": int(request.form['cookTimeSearch'].strip())}})
+        q["$and"].append({"cook_time": {"$lt": int(request.form['cookTimeSearch'].strip()}})
     
     # search by cuisine origin
     cuisine = request.form.get("cuisineType")
-    if cuisine == "":
-        pass
-    else:
-        q["$and"].append({"cuisine_type": {"$eq": cuisine}})
+    if cuisine:
+        q["$and"].append({"cuisine_type": {"$regex": cuisine}})
     
     # search by ingredient
     if len(request.form['ingredientField']) > 0:
