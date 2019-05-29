@@ -392,8 +392,9 @@ def search_page():
         q["$and"].append({"cook_time": {"$lt": int(request.form['cookTimeSearch'].strip())}})
     
     # search by cuisine origin
-    if len(request.form['cuisineSearch']) > 0:
-        q["$and"].append({"cuisine_type": {"$regex": request.form['cuisineSearch'].strip().lower()}})
+    cuisine = request.form.get("cuisineType")
+    if cuisine:
+        q["$and"].append({"cuisine_type": {"$regex": cuisine}})
     
     # search by ingredient
     if len(request.form['ingredientField']) > 0:

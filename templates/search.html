@@ -26,11 +26,14 @@
                     <label for="cookTimeSearch">Cook Time</label>
                 </div>
                 <!-- cuisine selector -->
-                <div class="width-restriction">
-                    <div class="input-field mt-2">
-                        <input class="col-12 mb-1" name='cuisineSearch' id="cuisineSearch" placeholder="Input a desired cuisine type" type="text">
-                    </div>
-                    <label for="cuisineSearch">Cuisine Origin</label>
+                <div class="col-5 mt-2">
+                    <select id="cuisineType" name="cuisineType">
+                        <option value="" disabled selected>Choose Cuisine</option>
+                        {% for cuis in cuisine %}
+                        <option value="{{cuis.cuisine_type}}">{{cuis.cuisine_type.capitalize()}}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="cuisine_selector">Cuisine Origin</label>
                 </div>
             </div>
             <!-- ingredients list -->

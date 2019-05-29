@@ -63,3 +63,11 @@ The following are configured under the hidden Config Vars in the heroku applicat
 - PORT: 5000
 
 The application was then linked to the master branch of the Github repository, through the heroku settings page, for automatic synchronisation of commits
+
+## Media
+
+Recipes were taken from BBC Good Food
+
+## Acknowledgements
+
+I would like to thank my mentor Theo Despoudis for giving me some pointers, which really helped maximise the functionality of the application
