@@ -19,7 +19,7 @@
                 <!-- cuisine selector -->
                 <div class="col-5">
                     <select id="cuisine" name="cuisine_type" required>
-                        <option value="" disabled selected>Choose Cuisine</option>
+                        <option value="none" disabled selected>Choose Cuisine</option>
                         {% for cuis in cuisine %}
                         <option value="{{cuis.cuisine_type}}">{{cuis.cuisine_type.capitalize()}}</option>
                         {% endfor %}

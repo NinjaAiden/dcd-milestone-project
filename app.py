@@ -369,7 +369,7 @@ def search_page():
     user_input = request.form.to_dict()
     empty_flag = { # As in if no input is given
         "cookTimeSearch": "",
-        "cuisineSearch": "",
+        "cuisineType": "",
         "ingredientField": "",
     }
     if user_input == empty_flag:
@@ -393,8 +393,10 @@ def search_page():
     
     # search by cuisine origin
     cuisine = request.form.get("cuisineType")
-    if cuisine:
-        q["$and"].append({"cuisine_type": {"$regex": cuisine}})
+    if cuisine == "":
+        pass
+    else:
+        q["$and"].append({"cuisine_type": {"$eq": cuisine}})
     
     # search by ingredient
     if len(request.form['ingredientField']) > 0:
