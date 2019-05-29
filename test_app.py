@@ -39,6 +39,5 @@ class TestRoute(unittest.TestCase):
         response = self.app.get('/custom_search', content_type='hmtl/text')
         self.assertEqual(response.status_code, 200)
 
-
 if __name__ == '__main__':
     unittest.main()

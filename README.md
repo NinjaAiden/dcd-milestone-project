@@ -38,6 +38,8 @@ number of criteria.
 - A confirmation is required to delete recipes to avoid accidental deletions
 - A message is displayed after clicking on the upvote button to advise user of whether an upvote was successful
 
+The database schema can be found [here.](https://github.com/NinjaAiden/dcd-milestone-project/blob/master/docs/database_schema.png)
+
 ## Technologies
 
 This data driven web application uses the following technologies:
@@ -52,4 +54,13 @@ This data driven web application uses the following technologies:
 
 ## Deployment
 
-This application was deployed on heroku and linked to the master branch of the Github repository for automatic synchronisation of commits
+This application is hosted on Heroku at: https://dcd-milestone-project.herokuapp.com/ In order to deploy this app to heroku, I needed to add a Procfile which tells heroku which language the app was written in and the name of the file that needs to be run - in this case this was app.py, I then set up a requirements.txt file which holds the dependencies that this app requires in order to run. Both the Procfile and requirements.txt file are committed to the repository and pushed to Heroku.
+
+I then had to set some environment variables in Heroku in order for the live URL to run.
+The following are configured under the hidden Config Vars:
+
+- IP: 0.0.0.0
+- PORT: 5000
+- SECRET_KEY: SECRET_KEY
+
+The apllictaion was then linked to the master branch of the Github repository for automatic synchronisation of commits
